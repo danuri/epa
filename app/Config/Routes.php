@@ -59,6 +59,11 @@ $routes->group("sasaran",['filter' => 'auth'], function ($routes) {
     $routes->get('delete/(:any)', 'Laporan::delete/$1');
 });
 
+$routes->group("download",['filter' => 'auth'], function ($routes) {
+    $routes->get('regulasi', 'Download::regulasi');
+    $routes->get('materi', 'Download::materi');
+});
+
 $routes->group("users",['filter' => 'auth'], function ($routes) {
     $routes->get('', 'Users::index');
     $routes->post('save', 'Users::save');

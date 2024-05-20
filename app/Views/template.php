@@ -205,7 +205,21 @@
                                 </ul>
                             </div>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarDownload" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDownload">
+                                <i class="ri-rocket-line"></i> <span data-key="t-landing">Download</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarDownload">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('download/regulasi')?>" class="nav-link" data-key="t-nft-landing"> Regulasi </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('download/regulasi')?>" class="nav-link" data-key="t-nft-landing"> Materi </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <!-- Sidebar -->

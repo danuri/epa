@@ -36,6 +36,7 @@ class Auth extends BaseController
           'nipa'  => $pegawai->nipa,
           'nama'  => $pegawai->nama,
           'tugas'  => $pegawai->tugas_kua,
+          'agama'  => $pegawai->agama,
           'tugas_kabupaten'  => $pegawai->tugas_kabupaten,
           'isLoggedIn' => true,
       ];

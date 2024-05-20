@@ -7,9 +7,10 @@ File: Custom Css File
 */
 
 :root[data-sidebar=dark] {
-  --vz-vertical-menu-bg: #058271;
-  --vz-vertical-menu-border: #217e8d;
+  --vz-vertical-menu-bg: #026a78;
+  --vz-vertical-menu-border: #034b54;
   --vz-vertical-menu-item-color: #ffffff;
   --vz-vertical-menu-title-color: #b9b583;
   --vz-vertical-menu-sub-item-color: #fdffd2;
+  --vz-vertical-menu-sub-item-hover-color: #ebf10e;
 }
