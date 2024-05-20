@@ -40,7 +40,7 @@
             <tbody>
               <?php foreach ($download as $row) {?>
                 <tr>
-                  <td><?= $row->created_date;?></td>
+                  <td><?= $row->created_at;?></td>
                   <td><?= '<b>'.$row->nama.'</b>'.'<br>'.$row->keterangan;?></td>
                   <td><a href="<?= base_url('uploads/dokumen/'.$row->lampiran);?>" onclick="viewer(<?= $row->id;?>)" class="btn btn-primary" target="_blank">Lihat</a></td>
                 </tr>

@@ -6,18 +6,18 @@ use CodeIgniter\Model;
 
 class DownloadModel extends Model
 {
-    protected $table            = 'downloads';
+    protected $table            = 'tr_download';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama','keterangan','kategori','target_wilayah','target_agama','lampiran','viewer','created_by'];
 
     protected bool $allowEmptyInserts = false;
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
