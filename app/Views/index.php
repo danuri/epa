@@ -10,7 +10,7 @@
                     <p class="mb-0 mt-2 pt-1 text-muted" id="tugas">Tempat tugas</p>
                     <p class="mb-0 mt-2 pt-1 text-muted">Status Pegawai <span id="statuspegawai" class="text-bold"></span></p>
                     <div class="d-flex gap-3 mt-4">
-                        <a href="<?= site_url('print/drh')?>" target="_blank" class="btn btn-success">Cetak DRH</a>
+                        <!-- <a href="<?= site_url('print/drh')?>" target="_blank" class="btn btn-success">Cetak DRH</a> -->
                     </div>
                 </div>
                 <img src="assets/images/bg-d.png" alt="" class="img-fluid" />
