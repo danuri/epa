@@ -27,11 +27,10 @@
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-nowrap table-centered align-middle">
+          <table class="table table-centered align-middle">
             <thead class="table-light">
               <tr>
                 <tr>
-                  <th>Tanggal</th>
                   <th>Dokumen</th>
                   <th>Download</th>
                 </tr>
@@ -40,9 +39,8 @@
             <tbody>
               <?php foreach ($downloads as $row) {?>
                 <tr>
-                  <td><?= $row->created_at;?></td>
-                  <td><?= '<b>'.$row->nama.'</b>'.'<br>'.$row->keterangan;?></td>
-                  <td><a href="<?= base_url('uploads/dokumen/'.$row->lampiran);?>" onclick="viewer(<?= $row->id;?>)" class="btn btn-primary" target="_blank">Lihat</a></td>
+                  <td><?= $row->created_at;?><br><?= '<b>'.$row->nama.'</b>'.'<br>'.$row->keterangan;?></td>
+                  <td><a href="<?= base_url('uploads/dokumen/'.$row->lampiran);?>" onclick="viewer(<?= $row->id;?>)" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                 </tr>
               <?php } ?>
             </tbody>

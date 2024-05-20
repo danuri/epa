@@ -177,7 +177,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSasaran" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSasaran">
-                                <i class="ri-rocket-line"></i> <span data-key="t-landing">Sasaran</span>
+                                <i class="ri-file-text-line"></i> <span data-key="t-landing">Sasaran</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarSasaran">
                                 <ul class="nav nav-sm flex-column">
@@ -192,7 +192,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarKinerja" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarKinerja">
-                                <i class="ri-rocket-line"></i> <span data-key="t-landing">Kinerja</span>
+                                <i class="ri-file-text-fill"></i> <span data-key="t-landing">Kinerja</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarKinerja">
                                 <ul class="nav nav-sm flex-column">
@@ -215,7 +215,7 @@
                                         <a href="<?= site_url('download/regulasi')?>" class="nav-link" data-key="t-nft-landing"> Regulasi </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('download/regulasi')?>" class="nav-link" data-key="t-nft-landing"> Materi </a>
+                                        <a href="<?= site_url('download/materi')?>" class="nav-link" data-key="t-nft-landing"> Materi </a>
                                     </li>
                                 </ul>
                             </div>

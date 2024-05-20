@@ -27,7 +27,7 @@
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-nowrap table-centered align-middle">
+          <table class="table table-centered align-middle">
             <thead class="table-light">
               <tr>
                 <tr>
