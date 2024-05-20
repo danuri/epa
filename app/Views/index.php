@@ -57,6 +57,82 @@
 <div class="row">
   <div class="col-lg-6">
     <div class="card">
+      <div class="card-header">
+        <h4>Update Data</h4>
+      </div>
+      <div class="card-body">
+        <form action="">
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nameInput" class="form-label">Status Pegawai</label>
+              </div>
+              <div class="col-lg-9">
+                <select class="form-select">
+                  <option value="PNS">PNS</option>
+                  <option value="PPPK">PPPK</option>
+                  <option value="NON PNS">NON ASN</option>
+                </select>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="websiteUrl" class="form-label">NIP</label>
+              </div>
+              <div class="col-lg-9">
+                <div class="input-group">
+                  <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-outline-success" type="button" id="button-addon2">Cek SIMPEG</button>
+                </div>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="websiteUrl" class="form-label">Pangkat/Golongan</label>
+              </div>
+              <div class="col-lg-9">
+                <input type="text" class="form-control" name="pangkat">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nameInput" class="form-label">Jenis Pendidikan</label>
+              </div>
+              <div class="col-lg-9">
+                <select class="form-select">
+                  <option value="KEAGAMAAN NON KEPENDIDIKAN">KEAGAMAAN NON KEPENDIDIKAN</option>
+                  <option value="KEAGAMAAN KEPENDIDIKAN">KEAGAMAAN KEPENDIDIKAN</option>
+                  <option value="UMUM">UMUM</option>
+                </select>
+              </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="nik" class="col-md-4 col-form-label">Pendidikan Terakhir</label>
+            <div class="col-md-8">
+              <select class="form-select" name="pendidikan" id="pendidikan">
+                <option value="SD">SD</option>
+                <option value="SD">SMP</option>
+                <option value="SD">SMA</option>
+                <option value="SD">D-I</option>
+                <option value="SD">D-II</option>
+                <option value="SD">D-III</option>
+                <option value="SD">S-1</option>
+                <option value="SD">S-2</option>
+                <option value="SD">S-3</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="nik" class="col-md-4 col-form-label">Program Studi</label>
+            <div class="col-md-8">
+              <select class="form-select" name="jurusan" id="jurusan">
+                <option value="" selected="selected">-</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
       <div class="card-body">
           <table class="table table-borderless mb-0">
               <tbody>
