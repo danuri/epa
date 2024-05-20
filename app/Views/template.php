@@ -162,12 +162,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('laporan')?>">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Laporan</span>
+                                <i class="ri-file-line"></i> <span data-key="t-dashboards">Laporan</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('laporan/lain')?>">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Laporan Lainnya</span>
+                                <i class="ri-file-3-line"></i> <span data-key="t-dashboards">Laporan Lainnya</span>
                             </a>
                         </li>
                         <li class="nav-item">
