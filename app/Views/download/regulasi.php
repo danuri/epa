@@ -38,7 +38,7 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($download as $row) {?>
+              <?php foreach ($downloads as $row) {?>
                 <tr>
                   <td><?= $row->created_at;?></td>
                   <td><?= '<b>'.$row->nama.'</b>'.'<br>'.$row->keterangan;?></td>
