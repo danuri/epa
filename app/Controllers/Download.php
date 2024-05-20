@@ -16,7 +16,7 @@ class Download extends BaseController
         return view('download/regulasi',$data);
     }
 
-    public function regulasi()
+    public function materi()
     {
         $model = new DownloadModel;
         $agama = session('agama');
