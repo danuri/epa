@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Hermawan\DataTables\DataTable;
-use App\Models\PenyuluhModel;
+use App\Models\Admin\PenyuluhModel;
 
 class Penyuluh extends BaseController
 {
@@ -17,7 +17,7 @@ class Penyuluh extends BaseController
         $data['jpenyuluhpns'] = $model->jumlahPenyuluh('PNS');
         $data['jpenyuluhpppk'] = $model->jumlahPenyuluh('PPPK');
         $data['jpenyuluhnon'] = $model->jumlahPenyuluh('NON PNS');
-        return view('penyuluh/index', $data);
+        return view('admin/penyuluh/index', $data);
     }
 
     public function getdata($kodeagama=0)
@@ -31,13 +31,15 @@ class Penyuluh extends BaseController
         $model->where(['agama'=>$agama]);
       }
 
-      if($kelola > 0){
+      if($level == 4){
         $model->where(['tugas_kabupaten'=>$kelola]);
+      }else if($level == 3){
+        $model->where(['tugas_provinsi'=>$kelola]);
       }
 
       return DataTable::of($model)
       ->add('action', function($row){
-          return '<a href="'.site_url('penyuluh/detail/'.encrypt($row->id)).'" type="button" target="_blank" class="btn btn-sm btn-primary">Detail</a>';
+          return '<a href="'.site_url('admin/penyuluh/detail/'.encrypt($row->id)).'" type="button" target="_blank" class="btn btn-sm btn-primary">Detail</a>';
       })->toJson(true);
     }
 
@@ -48,6 +50,6 @@ class Penyuluh extends BaseController
       $model = new PenyuluhModel;
       $data['penyuluh'] = $model->find($id);
 
-      return view('penyuluh/detail', $data);
+      return view('admin/penyuluh/detail', $data);
     }
 }

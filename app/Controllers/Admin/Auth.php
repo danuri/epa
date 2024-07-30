@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
@@ -10,7 +10,7 @@ class Auth extends BaseController
 
   public function index()
   {
-    return view('auth');
+    return view('admin/auth');
   }
 
   public function login()
@@ -18,7 +18,7 @@ class Auth extends BaseController
     if (!session()->get('isLoggedIn')) {
       return redirect()->to($_ENV['SSO_SIGNIN'].'?appid='.$_ENV['SSO_APPID']);
     }else{
-      return redirect()->to('');
+      return redirect()->to('admin');
     }
   }
 
@@ -56,10 +56,10 @@ class Auth extends BaseController
             'kodekelola' => $check->kelola_kode,
             'level'     => $check->level,
             'agama'     => $check->agama,
-            'isLoggedIn' => TRUE
+            'isLoggedInAdmin' => TRUE
           ];
           session()->set($ses_data);
-          return redirect()->to('/');
+          return redirect()->to('admin');
         }else{
           return redirect()->to($_ENV['SSO_SIGNIN'].'?appid='.$_ENV['SSO_APPID'].'&info=2');
         }
@@ -76,6 +76,6 @@ class Auth extends BaseController
   {
     $session = session();
     $session->destroy();
-    return redirect()->to('auth');
+    return redirect()->to('admin/auth');
   }
 }

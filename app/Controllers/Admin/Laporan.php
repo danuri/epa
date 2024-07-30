@@ -1,17 +1,25 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Hermawan\DataTables\DataTable;
-use App\Models\LaporanModel;
+use App\Models\Admin\LaporanModel;
 
 class Laporan extends BaseController
 {
     public function index()
     {
-        return view('penyuluh/laporan');
+      $y = ($this->request->getVar('tahun'))?$this->request->getVar('tahun'):date('Y');
+      $m = ($this->request->getVar('bulan'))?$this->request->getVar('bulan'):date('m');
+      $s = ($this->request->getVar('status'))?$this->request->getVar('status'):'STT.A01';
+
+      $data['tahun'] = $y;
+      $data['bulan'] = $m;
+      $data['status'] = $s;
+
+      return view('admin/penyuluh/laporan', $data);
     }
 
     public function getdata()
@@ -27,13 +35,38 @@ class Laporan extends BaseController
       //   $model->where(['status'=>0]);
       // }
 
-      if($kelola > 0){
-        $model->like('tugas_id', $kelola, 'after');
-      }
+      // if($kelola > 0){
+      //   $model->like('tugas_id', $kelola, 'after');
+      // }
+      $model->where('verifikator', $kelola);
 
       return DataTable::of($model)
+      ->edit('status', function($row){
+        if($row->status == 1){
+          $result = '<span class="badge bg-warning">Dikirim</span>';
+        }else if($row->status == 2){
+          $result = '<span class="badge bg-success">Diterima</span>';
+        }else if($row->status == 3){
+          $result = '<span class="badge bg-danger">Ditolak</span>';
+        }else{
+          $result = '';
+        }
+
+        return $result;
+      })
       ->add('action', function($row){
           return '<a href="javascript:;" onclick="detail(\''.$row->id.'\')" type="button" class="btn btn-sm btn-primary">Detail</a>';
+      })->filter(function ($builder, $request) {
+
+        if ($request->tahun)
+            $builder->where('waktu_tahun', $request->tahun);
+
+        if ($request->bulan)
+            $builder->where('waktu_bulan', $request->bulan);
+
+        if ($request->status)
+            $builder->where('status', $request->status);
+
       })->toJson(true);
     }
 
@@ -87,18 +120,17 @@ class Laporan extends BaseController
     public function terima($id)
     {
       $model = new LaporanModel();
-      $update = $model->update($id,['status'=>1]);
+      $update = $model->update($id,['status'=>2]);
       return $this->response->setJSON(['status'=>'ok']);
     }
 
-    public function tolak()
+    public function tolak($id)
     {
       $model = new LaporanModel();
 
-      $id = $this->request->getVar('id');
-      $info = $this->request->getVar('info');
+      $info = $this->request->getVar('keterangan');
 
-      $update = $model->update($id,['status'=>2,'info_verifikator'=>$info]);
+      $update = $model->update($id,['status'=>3,'info_verifikator'=>$info]);
       return $this->response->setJSON(['status'=>'ok']);
     }
 }

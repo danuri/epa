@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Hermawan\DataTables\DataTable;
-use App\Models\UserModel;
+use App\Models\Admin\KabupatenModel;
+use App\Models\Admin\UserModel;
+use App\Models\CrudModel;
 
 class Users extends BaseController
 {
     public function index()
     {
-        return view('users/index');
+        $crud = new CrudModel;
+        $data['kabupaten'] = $crud->getResult('temp_kabupaten',['id_prov'=>session('kodekelola')]);
+        return view('admin/users/index', $data);
     }
 
     public function getdata()
@@ -20,7 +24,7 @@ class Users extends BaseController
       $level = session('level');
       $agama = session('agama');
 
-      $model->where(['level >'=>$level,'agama'=>$agama]);
+      $model->where(['level'=>4,'agama'=>$agama,'parent'=>session('kodekelola')]);
 
       return DataTable::of($model)
       ->add('action', function($row){
@@ -37,10 +41,11 @@ class Users extends BaseController
       $param = [
         'nip' => $this->request->getVar('nip'),
         'nama' => $this->request->getVar('nama'),
-        'kelola' => $kab->nama,
+        'kelola' => $kab->kabupaten,
         'kelola_kode' => $this->request->getVar('kelola'),
         'agama' => session('agama'),
         'level' => 4,
+        'parent' => session('kodekelola'),
       ];
 
       $insert = $model->insert($param);

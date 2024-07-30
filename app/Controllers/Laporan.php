@@ -103,7 +103,7 @@ class Laporan extends BaseController
           'jumlah_jamaah' => $this->request->getVar('jumlah_jamaah'),
           // 'materi' => $materi,
           'category' => 1,
-          'status' => 0,
+          'status' => 1,
           'verifikator' => session('tugas_kabupaten')
         ];
 
@@ -132,7 +132,7 @@ class Laporan extends BaseController
           'waktu_bulan' => date('n',strtotime($this->request->getVar('waktu'))),
           'waktu_tahun' => date('Y',strtotime($this->request->getVar('waktu'))),
           'category' => 2,
-          'status' => 0,
+          'status' => 1,
           'verifikator' => session('tugas_kabupaten')
         ];
 
