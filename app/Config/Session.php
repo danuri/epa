@@ -21,7 +21,7 @@ class Session extends BaseConfig
      *
      * @var class-string<BaseHandler>
      */
-    public string $driver = FileHandler::class;
+    public string $driver = RedisHandler::class;
 
     /**
      * --------------------------------------------------------------------------
@@ -57,7 +57,8 @@ class Session extends BaseConfig
      *
      * IMPORTANT: You are REQUIRED to set a valid save path!
      */
-    public string $savePath = WRITEPATH . 'session';
+    // public string $savePath = WRITEPATH . 'session';
+    public string $savePath = 'tcp://10.33.0.13:6379?auth=0B1U5mmNdHYCbnatJpLmdVEf9fCo2hwUBmpr/htge40m7CGECFy4zR0grKiha9EOGCjl4Zyi3IsF6mhP';
 
     /**
      * --------------------------------------------------------------------------
