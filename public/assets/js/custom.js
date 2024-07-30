@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#kabupaten').select2({
+  $('#kabupatenx').select2({
     dropdownParent: $('#addUser'),
     ajax: {
       url: site_url+'ajax/getkabupaten',

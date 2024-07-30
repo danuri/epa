@@ -1,4 +1,4 @@
-<?= $this->extend('template') ?>
+<?= $this->extend('admin/template') ?>
 
 <?= $this->section('style') ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
@@ -82,7 +82,10 @@
                         <label for="kelola" class="form-label">Wilayah Kelola</label>
                     </div>
                     <div class="col-lg-9">
-                        <select id="kabupaten" name="kelola">
+                        <select id="kabupaten" class="form-select" name="kelola">
+                          <?php foreach ($kabupaten as $row) {
+                            echo '<option value="'.$row->id_kab.'">'.$row->kabupaten.'</option>';
+                          } ?>
                         </select>
                     </div>
                 </div>
@@ -109,7 +112,7 @@ $('#penyuluh').DataTable({
       processing: true,
       serverSide: true,
       ajax: {
-          url: '<?= site_url('users/getdata')?>',
+          url: '<?= site_url('admin/users/getdata')?>',
           method: 'POST'
       },
       columns: [

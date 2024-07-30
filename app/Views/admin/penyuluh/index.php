@@ -1,4 +1,4 @@
-<?= $this->extend('template') ?>
+<?= $this->extend('admin/template') ?>
 
 <?= $this->section('style') ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
@@ -132,14 +132,14 @@
 $(document).ready(function() {
 
   $('#agama').on('change', function(event) {
-    window.location.replace("<?= site_url('penyuluh/index') ?>/"+$('#agama').val());
+    window.location.replace("<?= site_url('admin/penyuluh/index') ?>/"+$('#agama').val());
   });
 
   $('#penyuluh').DataTable({
     processing: true,
     serverSide: true,
     ajax: {
-      url: '<?= site_url('penyuluh/getdata/'.$agama)?>',
+      url: '<?= site_url('admin/penyuluh/getdata/'.$agama)?>',
       method: 'POST'
     },
     columns: [

@@ -60,7 +60,7 @@
                                             <h5>Silahkan Login untuk mengakses aplikasi</h5>
                                             <p class="text-muted">Akun harus terdaftar untuk dapat mengakses aplikasi</p>
                                             <div class="mt-4">
-                                                <a href="<?= site_url('auth/login')?>" class="btn btn-success w-100">Masuk</a>
+                                                <a href="<?= site_url('admin/auth/login')?>" class="btn btn-success w-100">Masuk</a>
                                             </div>
                                         </div>
                                     </div>

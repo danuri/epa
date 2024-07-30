@@ -88,8 +88,8 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <h6 class="dropdown-header">Welcome <?= session('nama')?></h6>
-                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="<?= site_url('auth/logout') ?>"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+                        <a class="dropdown-item" href="<?= site_url('admin/auth/logout') ?>"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
                 </div>
             </div>
@@ -155,27 +155,34 @@
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url()?>">
+                            <a class="nav-link menu-link" href="<?= site_url('admin')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                             </a>
                         </li>
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                          <a class="nav-link menu-link" href="<?= site_url('penyuluh')?>">
+                          <a class="nav-link menu-link" href="<?= site_url('admin/penyuluh')?>">
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
                           </a>
                         </li>
+                        <?php if(in_array(session('level'),[4])){ ?>
                         <li class="nav-item">
-                          <a class="nav-link menu-link" href="<?= site_url('laporan')?>">
-                            <i class="ri-pages-line"></i> <span data-key="t-dashboards">Laporan Penyuluh</span>
+                          <a class="nav-link menu-link" href="<?= site_url('admin/laporan')?>">
+                            <i class="ri-pages-line"></i> <span data-key="t-dashboards">Pelaporan Penyuluh</span>
                           </a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
+                            <i class="ri-pages-line"></i> <span data-key="t-dashboards">Rekapitulasi</span>
+                          </a>
+                        </li>
+                        <?php } ?>
 
-                        <?php if(session('level') == 2){ ?>
+                        <?php if(in_array(session('level'),[1,2,3])){ ?>
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Master</span></li>
 
                         <li class="nav-item">
-                          <a class="nav-link menu-link" href="<?= site_url('users')?>">
+                          <a class="nav-link menu-link" href="<?= site_url('admin/users')?>">
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Admin Satker</span>
                           </a>
                         </li>
@@ -247,7 +254,7 @@
 
     <script src="<?= base_url()?>assets/js/app.js"></script>
     <script type="text/javascript">
-      var site_url = '<?= site_url()?>';
+      var site_url = '<?= site_url('admin')?>';
     </script>
     <?= $this->renderSection('script') ?>
 </body>

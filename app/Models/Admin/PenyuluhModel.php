@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
@@ -43,6 +43,7 @@ class PenyuluhModel extends Model
     public function jumlahPenyuluh($jenis)
     {
       $agama = session('agama');
+      $level = session('level');
       $kelola = session('kodekelola');
 
       if($jenis != '0'){
@@ -51,8 +52,10 @@ class PenyuluhModel extends Model
         $wjenis = "";
       }
 
-      if($kelola == '0'){
+      if($level == 2){
         $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' $wjenis");
+      }else if($level == 3){
+        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$kelola' $wjenis");
       }else{
         $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_kabupaten='$kelola' $wjenis");
       }

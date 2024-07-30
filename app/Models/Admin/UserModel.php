@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
@@ -12,7 +12,7 @@ class UserModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nip','nama','level','kelola','kelola_kode','agama'];
+    protected $allowedFields    = ['nip','nama','level','kelola','kelola_kode','agama','parent'];
 
     protected bool $allowEmptyInserts = false;
 
