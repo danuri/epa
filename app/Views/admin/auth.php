@@ -40,7 +40,7 @@
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
                                                 <a href="#" class="d-block">
-                                                    <img src="assets/images/logo_epa.png" alt="" height="18">
+                                                    <img src="<?= base_url()?>assets/images/logo_epa.png" alt="" height="18">
                                                 </a>
                                             </div>
                                             <div class="mt-auto">
