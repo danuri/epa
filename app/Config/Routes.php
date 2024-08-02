@@ -92,6 +92,7 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
      $routes->post('getdata/(:any)', 'Admin\Penyuluh::getdata/$1');
      $routes->get('detail/(:any)', 'Admin\Penyuluh::detail/$1');
      $routes->get('delete/(:any)', 'Admin\Penyuluh::delete/$1');
+     $routes->get('export', 'Admin\Penyuluh::export');
  });
 
  $routes->group("laporan", function ($routes) {
