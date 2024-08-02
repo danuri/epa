@@ -53,16 +53,6 @@
 <div class="row">
   <div class="col-lg-3 col-md-6">
       <div class="card">
-        <div class="card-header align-items-center d-flex">
-              <h4 class="card-title mb-0 flex-grow-1">Scrollspy in Navbar</h4>
-              <div class="float-end">
-                <div class="dropdown">
-                  <a href="<?= site_url('admin/penyuluh/export')?>" class="btn btn-sm btn-primary">
-                    Download Excel
-                  </a>
-                </div>
-              </div>
-          </div>
           <div class="card-body">
               <div class="d-flex align-items-center">
                   <div class="flex-grow-1 ms-3">
@@ -113,6 +103,16 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
+      <div class="card-header align-items-center d-flex">
+            <h4 class="card-title mb-0 flex-grow-1">Data Penyuluh Agama</h4>
+            <div class="float-end">
+              <div class="dropdown">
+                <a href="<?= site_url('admin/penyuluh/export')?>" class="btn btn-sm btn-primary">
+                  Download Excel
+                </a>
+              </div>
+            </div>
+        </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-centered table-nowrap mb-0" id="penyuluh">
