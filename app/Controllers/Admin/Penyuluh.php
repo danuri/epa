@@ -121,7 +121,7 @@ class Penyuluh extends BaseController
         $sheet->setCellValue('W'.$i, $row->jenis_pendidikan);
         $sheet->setCellValue('X'.$i, $row->organisasi);
         $sheet->setCellValue('Y'.$i, $row->spesialisasi);
-        $sheet->setCellValue('Z'.$i, $row->spesialisasi_2);
+        $sheet->setCellValue('Z'.$i, $row->spesialisasi2);
         $sheet->setCellValue('AA'.$i, $row->swafoto);
         $sheet->setCellValue('AB'.$i, $row->disabilitas);
 
