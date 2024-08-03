@@ -255,6 +255,14 @@
                 </tr>
               </thead>
               <tbody>
+                <?php foreach ($umum as $row) {?>
+                  <tr>
+                    <td><?= $row->tahun?></td>
+                    <td><?= $row->nama_diklat?></td>
+                    <td><?= $row->lembaga?></td>
+                    <td><?= $row->jam?></td>
+                  </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div>

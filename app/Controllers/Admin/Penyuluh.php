@@ -10,6 +10,7 @@ use \Hermawan\DataTables\DataTable;
 use App\Models\Admin\PenyuluhModel;
 use App\Models\SasarankhususModel;
 use App\Models\SasaranumumModel;
+use App\Models\DiklatModel;
 
 class Penyuluh extends BaseController
 {
@@ -59,6 +60,9 @@ class Penyuluh extends BaseController
 
       $sasum = new SasaranumumModel;
       $data['umum'] = $sasum->where(['id_penyuluh'=>$id])->findAll();
+
+      $diklat = new DiklatModel;
+      $data['diklat'] = $diklat->where(['id_penyuluh'=>$id])->findAll();
 
       return view('admin/penyuluh/detail', $data);
     }
