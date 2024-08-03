@@ -8,6 +8,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use \Hermawan\DataTables\DataTable;
 use App\Models\Admin\PenyuluhModel;
+use App\Models\Admin\SasarankhususModel;
+use App\Models\Admin\SasaranumumModel;
 
 class Penyuluh extends BaseController
 {
@@ -51,6 +53,12 @@ class Penyuluh extends BaseController
 
       $model = new PenyuluhModel;
       $data['penyuluh'] = $model->find($id);
+
+      $sasus = new SasarankhususModel;
+      $data['khusus'] = $sasus->join('tm_sasaran', 'tm_sasaran.id = tr_sasaran_khusus.sasaran')->where(['id_penyuluh'=>$id])->findAll();
+
+      $sasum = new SasaranumumModel;
+      $data['umum'] = $sasum->where(['id_penyuluh'=>$id])->findAll();
 
       return view('admin/penyuluh/detail', $data);
     }

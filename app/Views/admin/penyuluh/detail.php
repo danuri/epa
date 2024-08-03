@@ -192,18 +192,51 @@
         </div>
         <div class="tab-pane" id="tasks" role="tabpanel">
           <div>
-            <h5 class="font-size-16 mb-3">Kelompok Sasaran</h5>
+            <h5 class="font-size-16 mb-3">Kelompok Sasaran Khusus</h5>
 
             <div class="table-responsive">
               <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th>Sasaran</th>
-                    <th>Keterangan</th>
-                    <th>Organisasi Induk</th>
+                    <th>Ketua</th>
+                    <th>No. HP</th>
+                    <th>Jumlah Anggota</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach ($khusus as $row) {?>
+                    <tr>
+                      <td><?= $row->nama?></td>
+                      <td><?= $row->ketua?></td>
+                      <td><?= $row->no_hp?></td>
+                      <td><?= $row->jumlah_anggota?></td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+            <h5 class="font-size-16 mb-3">Kelompok Sasaran Umum</h5>
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Jenis</th>
+                    <th>Nama</th>
+                    <th>Organisasi Induk</th>
+                    <th>Jumlah Anggota</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($umum as $row) {?>
+                    <tr>
+                      <td><?= $row->jenis?></td>
+                      <td><?= $row->nama?></td>
+                      <td><?= $row->organisasi_induk?></td>
+                      <td><?= $row->jumlah_jamaah?></td>
+                    </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
