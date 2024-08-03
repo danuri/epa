@@ -8,8 +8,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use \Hermawan\DataTables\DataTable;
 use App\Models\Admin\PenyuluhModel;
-use App\Models\Admin\SasarankhususModel;
-use App\Models\Admin\SasaranumumModel;
+use App\Models\SasarankhususModel;
+use App\Models\SasaranumumModel;
 
 class Penyuluh extends BaseController
 {
