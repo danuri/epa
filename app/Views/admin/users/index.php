@@ -82,11 +82,25 @@
                         <label for="kelola" class="form-label">Wilayah Kelola</label>
                     </div>
                     <div class="col-lg-9">
+                      <?php
+                      if(session('level') == 2){
+                        ?>
+                        <select id="kabupaten" class="form-select" name="kelola">
+                          <?php foreach ($provinsi as $row) {
+                            echo '<option value="'.$row->id_prov.'">'.$row->nama.'</option>';
+                          } ?>
+                        </select>
+                        <?php
+                      }else if(session('level') == 3){
+                        ?>
                         <select id="kabupaten" class="form-select" name="kelola">
                           <?php foreach ($kabupaten as $row) {
                             echo '<option value="'.$row->id_kab.'">'.$row->kabupaten.'</option>';
                           } ?>
                         </select>
+                        <?php
+                      }
+                      ?>
                     </div>
                 </div>
                 <div class="text-end">
