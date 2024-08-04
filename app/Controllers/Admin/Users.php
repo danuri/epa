@@ -50,7 +50,7 @@ class Users extends BaseController
       if(session('level') == 2){
         $level = 3;
       }else if(session('level') == 3){
-        $level = 4
+        $level = 4;
       }
 
       $param = [
