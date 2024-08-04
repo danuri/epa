@@ -44,19 +44,26 @@ class Users extends BaseController
     {
       $model = new UserModel();
 
-      $kabm = new KabupatenModel;
-      $kab = $kabm->find($this->request->getVar('kelola'));
-
       if(session('level') == 2){
+
         $level = 3;
+        $kabm = new KabupatenModel;
+        $kab = $kabm->where(['id_prov'=>$this->request->getVar('kelola')])->first();
+        $kelola = $kab->provinsi;
+
       }else if(session('level') == 3){
+
+        $kabm = new KabupatenModel;
+        $kab = $kabm->find($this->request->getVar('kelola'));
         $level = 4;
+        $kelola = $kab->kabupaten;
+
       }
 
       $param = [
         'nip' => $this->request->getVar('nip'),
         'nama' => $this->request->getVar('nama'),
-        'kelola' => $kab->kabupaten,
+        'kelola' => $kelola,
         'kelola_kode' => $this->request->getVar('kelola'),
         'agama' => session('agama'),
         'level' => $level,
