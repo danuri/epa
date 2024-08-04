@@ -29,9 +29,9 @@ class Users extends BaseController
       $agama = session('agama');
 
       if(session('level') == 2){
-        $model->where(['level'=>4,'agama'=>$agama,'parent'=>session('kodekelola')]);
-      }else if(session('level') == 3){
         $model->where(['level'=>3,'agama'=>$agama]);
+      }else if(session('level') == 3){
+        $model->where(['level'=>4,'agama'=>$agama,'parent'=>session('kodekelola')]);
       }
 
       return DataTable::of($model)
