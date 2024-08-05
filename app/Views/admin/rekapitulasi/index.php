@@ -127,7 +127,7 @@
               <?php foreach ($provinsi as $row) {?>
                 <tr>
                   <td><?= $row->id_prov?></td>
-                  <td><a href="<?= site_url('admin/provinsi/'.$row->id_prov)?>"><?= $row->nama?></a></td>
+                  <td><a href="<?= site_url('admin/rekapitulasi/provinsi/'.$row->id_prov)?>"><?= $row->nama?></a></td>
                   <td><?= $row->jumlah?></td>
                 </tr>
               <?php } ?>
