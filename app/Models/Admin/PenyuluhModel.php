@@ -61,4 +61,13 @@ class PenyuluhModel extends Model
       }
       return $query->getRow();
     }
+
+    public function jumlahProvinsi()
+    {
+      $query = $this->db->query("SELECT a.*, COUNT(b.id) AS jumlah FROM tm_provinsi a
+                                INNER JOIN penyuluh b
+                                ON a.id_prov = b.tugas_provinsi
+                                GROUP BY a.id_prov");
+      return $query->getResul();
+    }
 }

@@ -196,8 +196,8 @@
 
                         <?php if(in_array(session('level'),[2])){ ?>
                           <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin/regulasi')?>">
-                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Regulasi</span>
+                            <a class="nav-link menu-link" href="<?= site_url('admin/download')?>">
+                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Download</span>
                             </a>
                           </li>
                         <?php } ?>

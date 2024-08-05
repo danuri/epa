@@ -92,6 +92,10 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
        $routes->get('getkabupaten', 'Admin\Ajax::getkabupaten');
    });
 
+   $routes->group("rekapitulasi", function ($routes) {
+       $routes->get('/', 'Admin\Rekapitulasi::index');
+   });
+
    $routes->group("penyuluh", function ($routes) {
        $routes->get('', 'Admin\Penyuluh::index');
        $routes->get('index/(:num)', 'Admin\Penyuluh::index/$1');
