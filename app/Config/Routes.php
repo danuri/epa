@@ -94,7 +94,7 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
 
    $routes->group("rekapitulasi", function ($routes) {
        $routes->get('/', 'Admin\Rekapitulasi::index');
-       $routes->get('provins/(:num)', 'Admin\Rekapitulasi::provinsi/$1');
+       $routes->get('provinsi/(:num)', 'Admin\Rekapitulasi::provinsi/$1');
    });
 
    $routes->group("penyuluh", function ($routes) {
