@@ -64,7 +64,13 @@ class PenyuluhModel extends Model
 
     public function jumlahPenyuluhSub($prov,$agama,$jenis)
     {
-      $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$prov' AND status_pegawai='$jenis'");
+      if($jenis != '0'){
+        $wjenis = "AND status_pegawai='$jenis'";
+      }else{
+        $wjenis = "";
+      }
+
+      $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$prov' $wjenis");
 
       return $query->getRow();
     }

@@ -32,7 +32,7 @@ class Rekapitulasi extends BaseController
 
       $agama = session('agama');
 
-      $data['jpenyuluh'] = $model->jumlahPenyuluhSub(0);
+      $data['jpenyuluh'] = $model->jumlahPenyuluhSub($idprov,$agama,0);
       $data['jpenyuluhpns'] = $model->jumlahPenyuluhSub($idprov,$agama,'PNS');
       $data['jpenyuluhpppk'] = $model->jumlahPenyuluhSub($idprov,$agama,'PPPK');
       $data['jpenyuluhnon'] = $model->jumlahPenyuluhSub($idprov,$agama,'NON PNS');
