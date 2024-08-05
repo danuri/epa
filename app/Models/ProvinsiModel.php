@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ProvinsiModel extends Model
 {
     protected $table            = 'tm_provinsi';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_prov';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
