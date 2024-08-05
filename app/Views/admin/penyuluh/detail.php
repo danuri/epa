@@ -39,6 +39,7 @@
           </div>
           <h5 class="mt-3 mb-1"><?= $penyuluh->nama?></h5>
           <p class="text-muted"><?= $penyuluh->nipa?></p>
+          <p><?= $penyuluh->status_pegawai?></p>
 
           <div class="mt-4">
             <button type="button" class="btn btn-light btn-sm"><i class="uil uil-envelope-alt me-2"></i> Message</button>
