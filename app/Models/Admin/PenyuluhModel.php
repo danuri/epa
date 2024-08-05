@@ -68,6 +68,6 @@ class PenyuluhModel extends Model
                                 INNER JOIN penyuluh b
                                 ON a.id_prov = b.tugas_provinsi
                                 GROUP BY a.id_prov");
-      return $query->getResul();
+      return $query->getResult();
     }
 }
