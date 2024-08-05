@@ -12,7 +12,7 @@
   <div class="col-12">
     <div class="d-flex align-items-lg-center flex-lg-row flex-column">
       <div class="flex-grow-1">
-        <h4 class="fs-16 mb-1">Data Penyuluh Agama</h4>
+        <h4 class="fs-16 mb-1">Rekapitulasi Penyuluh Agama Provinsi <?= $namaprov->nama?></h4>
         <!-- <p class="text-muted mb-0">Here's what's happening with your store today.</p> -->
       </div>
       <div class="mt-3 mt-lg-0">
@@ -115,18 +115,18 @@
         </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-centered table-nowrap mb-0" id="provinsi">
+          <table class="table table-centered table-nowrap mb-0" id="kabupaten">
             <thead class="table-light">
               <tr>
-                <th>Kode Provinsi</th>
-                <th>Provinsi</th>
+                <th>Kode Kabupaten</th>
+                <th>Kabupaten</th>
                 <th>Jumlah Penyuluh</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($provinsi as $row) {?>
+              <?php foreach ($kabupaten as $row) {?>
                 <tr>
-                  <td><?= $row->id_prov?></td>
+                  <td><?= $row->id_kab?></td>
                   <td><?= $row->nama?></td>
                   <td><?= $row->jumlah?></td>
                 </tr>
@@ -145,7 +145,7 @@
 <script src="<?= base_url()?>assets/libs/datatables/dataTables.responsive.min.js"></script>
 <script>
 $(document).ready(function() {
-  $('#provinsi').DataTable();
+  $('#kabupaten').DataTable();
 });
 </script>
 <?= $this->endSection() ?>

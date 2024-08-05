@@ -62,12 +62,30 @@ class PenyuluhModel extends Model
       return $query->getRow();
     }
 
-    public function jumlahProvinsi()
+    public function jumlahPenyuluhSub($prov,$agama,$jenis)
+    {
+      $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$prov' AND status_pegawai='$jenis'");
+
+      return $query->getRow();
+    }
+
+    public function jumlahProvinsi($agama)
     {
       $query = $this->db->query("SELECT a.*, COUNT(b.id) AS jumlah FROM tm_provinsi a
                                 INNER JOIN penyuluh b
                                 ON a.id_prov = b.tugas_provinsi
+                                WHERE b.agama = '$agama'
                                 GROUP BY a.id_prov");
+      return $query->getResult();
+    }
+
+    public function jumlahKabupaten($prov,$agama)
+    {
+      $query = $this->db->query("SELECT a.*, COUNT(b.id) AS jumlah FROM tm_kabupaten a
+                                INNER JOIN penyuluh b
+                                ON a.id_kab = b.tugas_kabupaten
+                                WHERE a.id_prov = '$prov' AND b.agama = '$agama'
+                                GROUP BY a.id_kab");
       return $query->getResult();
     }
 }
