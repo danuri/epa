@@ -36,6 +36,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'auth'          => \App\Filters\SsoAuth::class,
         'adminauth'     => \App\Filters\AdminAuth::class,
+        'bimasauth'     => \App\Filters\BimasAuth::class,
     ];
 
     /**

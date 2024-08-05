@@ -77,37 +77,43 @@ $routes->get('admin/auth/callback', 'Admin\Auth::callback');
 $routes->get('admin/auth/login', 'Admin\Auth::login');
 $routes->get('admin/auth/logout', 'Admin\Auth::logout');
 
+$routes->group("admin/download",['filter' => 'bimasauth'], function ($routes) {
+  $routes->get('/', 'Admin\Download::index');
+  $routes->get('save', 'Admin\Download::save');
+
+});
+
 $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
 
 
   $routes->get('/', 'Admin\Home::index');
 
- $routes->group("ajax", function ($routes) {
-     $routes->get('getkabupaten', 'Admin\Ajax::getkabupaten');
- });
+   $routes->group("ajax", function ($routes) {
+       $routes->get('getkabupaten', 'Admin\Ajax::getkabupaten');
+   });
 
- $routes->group("penyuluh", function ($routes) {
-     $routes->get('', 'Admin\Penyuluh::index');
-     $routes->get('index/(:num)', 'Admin\Penyuluh::index/$1');
-     $routes->post('getdata/(:any)', 'Admin\Penyuluh::getdata/$1');
-     $routes->get('detail/(:any)', 'Admin\Penyuluh::detail/$1');
-     $routes->get('delete/(:any)', 'Admin\Penyuluh::delete/$1');
-     $routes->get('export', 'Admin\Penyuluh::export');
- });
+   $routes->group("penyuluh", function ($routes) {
+       $routes->get('', 'Admin\Penyuluh::index');
+       $routes->get('index/(:num)', 'Admin\Penyuluh::index/$1');
+       $routes->post('getdata/(:any)', 'Admin\Penyuluh::getdata/$1');
+       $routes->get('detail/(:any)', 'Admin\Penyuluh::detail/$1');
+       $routes->get('delete/(:any)', 'Admin\Penyuluh::delete/$1');
+       $routes->get('export', 'Admin\Penyuluh::export');
+   });
 
- $routes->group("laporan", function ($routes) {
-     $routes->get('', 'Admin\Laporan::index');
-     $routes->post('getdata', 'Admin\Laporan::getdata');
-     $routes->get('detail/(:any)', 'Admin\Laporan::detail/$1');
-     $routes->get('terima/(:any)', 'Admin\Laporan::terima/$1');
-     $routes->post('tolak/(:any)', 'Admin\Laporan::tolak/$1');
- });
+   $routes->group("laporan", function ($routes) {
+       $routes->get('', 'Admin\Laporan::index');
+       $routes->post('getdata', 'Admin\Laporan::getdata');
+       $routes->get('detail/(:any)', 'Admin\Laporan::detail/$1');
+       $routes->get('terima/(:any)', 'Admin\Laporan::terima/$1');
+       $routes->post('tolak/(:any)', 'Admin\Laporan::tolak/$1');
+   });
 
- $routes->group("users", function ($routes) {
-     $routes->get('', 'Admin\Users::index');
-     $routes->post('save', 'Admin\Users::save');
-     $routes->post('getdata', 'Admin\Users::getdata');
-     $routes->get('detail/(:any)', 'Admin\Users::detail/$1');
-     $routes->get('delete/(:any)', 'Admin\Users::delete/$1');
- });
+   $routes->group("users", function ($routes) {
+       $routes->get('', 'Admin\Users::index');
+       $routes->post('save', 'Admin\Users::save');
+       $routes->post('getdata', 'Admin\Users::getdata');
+       $routes->get('detail/(:any)', 'Admin\Users::detail/$1');
+       $routes->get('delete/(:any)', 'Admin\Users::delete/$1');
+   });
 });

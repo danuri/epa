@@ -12,7 +12,7 @@ class Download extends BaseController
     {
         $model = new DownloadModel;
         $agama = session('agama');
-        $data['downloads'] = $model->where('kategori','regulasi')->whereIn('target_agama',[0,$agama])->findAll();
+        $data['downloads'] = $model->where('kategori','Regulasi')->whereIn('target_agama',[0,$agama])->findAll();
         return view('download/regulasi',$data);
     }
 
@@ -20,7 +20,7 @@ class Download extends BaseController
     {
         $model = new DownloadModel;
         $agama = session('agama');
-        $data['downloads'] = $model->where('kategori','materi')->whereIn('target_agama',[0,$agama])->findAll();
+        $data['downloads'] = $model->where('kategori','Materi')->whereIn('target_agama',[0,$agama])->findAll();
         return view('download/materi',$data);
     }
 }

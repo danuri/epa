@@ -165,6 +165,12 @@
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
                           </a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
+                            <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Rekapitulasi Penyuluh</span>
+                          </a>
+                        </li>
+
                         <?php if(in_array(session('level'),[4])){ ?>
                         <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/laporan')?>">
@@ -186,6 +192,14 @@
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Admin Satker</span>
                           </a>
                         </li>
+                        <?php } ?>
+
+                        <?php if(in_array(session('level'),[2])){ ?>
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/regulasi')?>">
+                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Regulasi</span>
+                            </a>
+                          </li>
                         <?php } ?>
 
                     </ul>
