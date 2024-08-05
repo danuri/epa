@@ -12,9 +12,10 @@ class Download extends BaseController
     public function index()
     {
         $model = new DownloadModel;
+        $crud = new CrudModel;
         $data['download'] = $model->where(['target_agama'=>session('agama')])->findAll();
         $data['provinsi'] = $crud->getResult('tm_provinsi');
-        
+
         return view('admin/download/index', $data);
     }
 
