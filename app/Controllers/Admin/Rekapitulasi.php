@@ -11,7 +11,7 @@ class Rekapitulasi extends BaseController
     public function index()
     {
       $model = new PenyuluhModel();
-      $data['agama'] = ($agama)?$agama:session('agama');
+      
       $data['jpenyuluh'] = $model->jumlahPenyuluh(0);
       $data['jpenyuluhpns'] = $model->jumlahPenyuluh('PNS');
       $data['jpenyuluhpppk'] = $model->jumlahPenyuluh('PPPK');
