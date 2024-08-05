@@ -255,7 +255,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($umum as $row) {?>
+                <?php foreach ($diklat as $row) {?>
                   <tr>
                     <td><?= $row->tahun?></td>
                     <td><?= $row->nama_diklat?></td>
