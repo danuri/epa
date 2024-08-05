@@ -10,12 +10,13 @@
 <div class="row">
   <div class="col-12">
     <div class="page-title-box d-flex align-items-center justify-content-between">
-      <h4 class="mb-0">Pengguna</h4>
+      <h4 class="mb-0">Manajemen Dokumen Download</h4>
 
       <div class="page-title-right">
         <ol class="breadcrumb m-0">
           <li class="breadcrumb-item"><a href="javascript: void(0);">ePA</a></li>
-          <li class="breadcrumb-item active">Data Pengguna</li>
+          <li class="breadcrumb-item">Master</li>
+          <li class="breadcrumb-item active">Download</li>
         </ol>
       </div>
 
@@ -44,7 +45,7 @@
                 <th>Nama</th>
                 <th>Kategori</th>
                 <th>Keterangan</th>
-                <th>Diunduh</th>
+                <th>Diunduh (kali)</th>
                 <th>Opsi</th>
               </tr>
             </thead>
