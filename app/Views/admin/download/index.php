@@ -51,10 +51,10 @@
             <tbody>
               <?php foreach ($download as $row) {?>
                 <tr>
-                  <td><?= $nama?></td>
-                  <td><?= $kategori?></td>
-                  <td><?= $keterangan?></td>
-                  <td><?= $viewer?></td>
+                  <td><?= $row->nama?></td>
+                  <td><?= $row->kategori?></td>
+                  <td><?= $row->keterangan?></td>
+                  <td><?= $row->viewer?></td>
                   <td>opsi</td>
                 </tr>
               <?php } ?>
