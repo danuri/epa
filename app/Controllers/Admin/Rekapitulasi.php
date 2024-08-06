@@ -23,7 +23,12 @@ class Rekapitulasi extends BaseController
 
         return view('admin/rekapitulasi/index', $data);
       }else if(session('level') == 3){
-        $data['kabupaten'] = $model->jumlahKabupaten(session('kodekelola'),session('agama'));
+        $idprov = session('kodekelola');
+
+        $pm = new ProvinsiModel();
+        $data['namaprov'] = $pm->find($idprov);
+
+        $data['kabupaten'] = $model->jumlahKabupaten($idprov,session('agama'));
 
         return view('admin/rekapitulasi/provinsi', $data);
       }
