@@ -18,9 +18,16 @@ class Rekapitulasi extends BaseController
       $data['jpenyuluhpppk'] = $model->jumlahPenyuluh('PPPK');
       $data['jpenyuluhnon'] = $model->jumlahPenyuluh('NON PNS');
 
-      $data['provinsi'] = $model->jumlahProvinsi(session('agama'));
+      if(session('level') == 2){
+        $data['provinsi'] = $model->jumlahProvinsi(session('agama'));
 
-      return view('admin/rekapitulasi/index', $data);
+        return view('admin/rekapitulasi/index', $data);
+      }else if(session('level') == 3){
+        $data['kabupaten'] = $model->jumlahKabupaten(session('kodekelola'),session('agama'));
+
+        return view('admin/rekapitulasi/provinsi', $data);
+      }
+
     }
 
     public function provinsi($idprov)
