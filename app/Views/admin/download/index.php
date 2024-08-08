@@ -71,7 +71,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-              <form action="users/save" method="post">
+              <form action="download/save" method="post" enctype="multipart/form-data">
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label for="nama" class="form-label">Nama Dokumen</label>
@@ -97,18 +97,6 @@
                     </div>
                     <div class="col-lg-9">
                         <textarea name="keterangan" rows="3" class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-lg-3">
-                        <label for="provinsi" class="form-label">Target Wilayah</label>
-                    </div>
-                    <div class="col-lg-9">
-                      <select id="provinsi" class="form-select" name="target_wilayah">
-                        <?php foreach ($provinsi as $row) {
-                          echo '<option value="'.$row->id_prov.'">'.$row->nama.'</option>';
-                        } ?>
-                      </select>
                     </div>
                 </div>
                 <div class="row mb-3">

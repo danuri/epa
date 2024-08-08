@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\DownloadModel;
 use App\Models\CrudModel;
+use Aws\S3\S3Client;
 
 class Download extends BaseController
 {
@@ -25,23 +26,49 @@ class Download extends BaseController
           'nama' => "required",
           'kategori' => "required",
           'keterangan' => "required",
-          'target_wilayah' => "required",
           'target_agama' => "required",
-          'lampiran' => "required",
+          'lampiran' => [
+              'label' => 'Lampiran PDF',
+              'rules' => [
+                  'uploaded[lampiran]',
+                  'mime_in[lampiran,application/pdf]',
+              ],
+          ]
         ])) {
             return redirect()->back()->with('message', 'Harap isi dengan lengkap.');
         }
 
       // Minio upload
-      $lampiran = '';
+      $file_name = 'document.'.time().'.'.$ext;
+      $s3 = new S3Client([
+        'region'  => 'us-east-1',
+        'endpoint' => 'http://10.33.0.199:9000/',
+        'use_path_style_endpoint' => true,
+        'version' => 'latest',
+        'credentials' => [
+          // 'key'    => "118ZEXFCFS0ICPCOLIEJ",
+          // 'secret' => "9xR+TBkYyzw13guLqN7TLvxhfuOHSW++g7NCEdgP",
+          'key'    => "PkzyP2GIEBe8z29xmahI",
+          'secret' => "voNVqTilX2iux6u7pWnaqJUFG1414v0KTaFYA0Uz",
+        ],
+        'http'    => [
+            'verify' => false
+        ]
+      ]);
+
+  		$result = $s3->putObject([
+  			'Bucket' => 'epa',
+  			'Key'    => 'dokumen/'.$file_name,
+  			'SourceFile' => $temp_file_location,
+        'ContentType' => 'application/pdf'
+  		]);
 
       $param = [
         'nama' => $this->request->getVar('nama'),
         'kategori' => $this->request->getVar('kategori'),
         'keterangan' => $this->request->getVar('keterangan'),
-        'target_wilayah' => $this->request->getVar('target_wilayah'),
         'target_agama' => session('agama'),
-        'lampiran' => $lampiran,
+        'lampiran' => $file_name,
         'viewer' => 0,
       ];
 
