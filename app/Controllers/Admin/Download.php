@@ -41,8 +41,10 @@ class Download extends BaseController
       // Minio upload
       $file_name = $_FILES['lampiran']['name'];
       $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-      
+
       $file_name = 'document.'.time().'.'.$ext;
+      $temp_file_location = $_FILES['lampiran']['tmp_name'];
+      
       $s3 = new S3Client([
         'region'  => 'us-east-1',
         'endpoint' => 'http://10.33.0.199:9000/',
