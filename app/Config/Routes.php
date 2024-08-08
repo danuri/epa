@@ -79,7 +79,7 @@ $routes->get('admin/auth/logout', 'Admin\Auth::logout');
 
 $routes->group("admin/download",['filter' => 'bimasauth'], function ($routes) {
   $routes->get('/', 'Admin\Download::index');
-  $routes->get('save', 'Admin\Download::save');
+  $routes->post('save', 'Admin\Download::save');
 
 });
 
