@@ -32,6 +32,7 @@ class Download extends BaseController
               'rules' => [
                   'uploaded[lampiran]',
                   'mime_in[lampiran,application/pdf]',
+                  'max_size[lampiran,5000]',
               ],
           ]
         ])) {
