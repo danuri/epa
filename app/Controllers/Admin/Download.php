@@ -26,7 +26,6 @@ class Download extends BaseController
           'nama' => "required",
           'kategori' => "required",
           'keterangan' => "required",
-          'target_agama' => "required",
           'lampiran' => [
               'label' => 'Lampiran PDF',
               'rules' => [
