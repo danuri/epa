@@ -56,7 +56,10 @@
                   <td><?= $row->kategori?></td>
                   <td><?= $row->keterangan?></td>
                   <td><?= $row->viewer?></td>
-                  <td>opsi</td>
+                  <div class="hstack gap-3 flex-wrap">
+                      <a href="javascript:void(0);" onclick="viewdoc('https://epa.kemenag.go.id/cdn/epa/dokumen/<?= $row->lampiran?>')" class="link-success fs-15"><i class="ri-eye-fill"></i></a>
+                      <a href="<?= site_url('admin/download/delete/'.encrypt($row->id))?>" onclick="return confirm('Data akan dihapus?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
+                  </div>
                 </tr>
               <?php } ?>
             </tbody>
@@ -116,6 +119,21 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade modaldoc" tabindex="-1" role="dialog" aria-labelledby="viewdoc" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewdoc">Lampiran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <embed type="application/pdf" id="embedfile" src="https://epa.kemenag.go.id/cdn/dokumen/<?= $tugas->attachment?>" width="100%" height="600"></embed>
+        </div>
+    </div>
+  </div>
+</div>
+
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="<?= base_url()?>assets/libs/datatables/jquery.dataTables.min.js"></script>
@@ -134,6 +152,11 @@ function detail(id) {
   $('#detailbody').load('<?= site_url('laporan/detail')?>/'+id);
 
   $('#detail').modal('show');
+}
+
+function viewdoc(url) {
+  $('#embedfile').attr('src', url)
+  $('.modaldoc').modal('show');
 }
 </script>
 <?= $this->endSection() ?>

@@ -82,4 +82,13 @@ class Download extends BaseController
 
       return redirect()->back()->with('message', 'Dokumen telah ditambahkan');
     }
+
+    public function delete($id)
+    {
+      $id = decrypt($id);
+
+      $model = new DownloadModel;
+      $delete = $model->delete($id);
+      return redirect()->back()->with('message', 'Dokumen telah dihapus');
+    }
 }
