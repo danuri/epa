@@ -44,7 +44,7 @@ class Download extends BaseController
 
       $file_name = 'document.'.time().'.'.$ext;
       $temp_file_location = $_FILES['lampiran']['tmp_name'];
-      
+
       $s3 = new S3Client([
         'region'  => 'us-east-1',
         'endpoint' => 'http://10.33.0.199:9000/',
@@ -53,8 +53,8 @@ class Download extends BaseController
         'credentials' => [
           // 'key'    => "118ZEXFCFS0ICPCOLIEJ",
           // 'secret' => "9xR+TBkYyzw13guLqN7TLvxhfuOHSW++g7NCEdgP",
-          'key'    => "PkzyP2GIEBe8z29xmahI",
-          'secret' => "voNVqTilX2iux6u7pWnaqJUFG1414v0KTaFYA0Uz",
+          'key'    => "GXQij0qXEekpFoBdKZfG",
+          'secret' => "fQVClQicjPfsWwRj8Ybek4A3kW73j7Nhla0N3hRH",
         ],
         'http'    => [
             'verify' => false
