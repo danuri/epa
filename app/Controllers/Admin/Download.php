@@ -76,6 +76,6 @@ class Download extends BaseController
       $model = new DownloadModel;
       $insert = $model->insert($param);
 
-      return redirect()->back()->with('message', 'Dokumen telah ditambahkan');
+      // return redirect()->back()->with('message', 'Dokumen telah ditambahkan');
     }
 }
