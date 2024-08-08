@@ -128,7 +128,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <embed type="application/pdf" id="embedfile" src="https://epa.kemenag.go.id/cdn/dokumen/<?= $tugas->attachment?>" width="100%" height="600"></embed>
+        <embed type="application/pdf" id="embedfile" src="" width="100%" height="600"></embed>
         </div>
     </div>
   </div>
