@@ -56,10 +56,12 @@
                   <td><?= $row->kategori?></td>
                   <td><?= $row->keterangan?></td>
                   <td><?= $row->viewer?></td>
-                  <div class="hstack gap-3 flex-wrap">
+                  <td>
+                    <div class="hstack gap-3 flex-wrap">
                       <a href="javascript:void(0);" onclick="viewdoc('https://epa.kemenag.go.id/cdn/epa/dokumen/<?= $row->lampiran?>')" class="link-success fs-15"><i class="ri-eye-fill"></i></a>
                       <a href="<?= site_url('admin/download/delete/'.encrypt($row->id))?>" onclick="return confirm('Data akan dihapus?')" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></a>
-                  </div>
+                    </div>
+                  </td>
                 </tr>
               <?php } ?>
             </tbody>
