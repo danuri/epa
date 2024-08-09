@@ -71,6 +71,14 @@ class Laporan extends BaseController
           'waktu' => "required",
           'jumlah_jamaah' => "required",
           'publish_link' => "required",
+          'foto' => [
+              'label' => 'Foto',
+              'rules' => [
+                  'uploaded[lampiran]',
+                  'mime_in[lampiran,image/jpeg,image/png]',
+                  'max_size[lampiran,500]',
+              ],
+          ]
         ])) {
             return redirect()->back()->with('message', 'Harap isi dengan lengkap.');
         }
@@ -83,7 +91,33 @@ class Laporan extends BaseController
           $sasaran_id = str_replace('khusus','',$this->request->getVar('sasaran_id'));
         }
 
-        $foto = '';
+        // Minio upload
+        $file_name = $_FILES['foto']['name'];
+        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+        $foto = 'foto.'.time().'.'.$ext;
+        $temp_file_location = $_FILES['foto']['tmp_name'];
+
+        $s3 = new S3Client([
+          'region'  => 'us-east-1',
+          'endpoint' => 'http://10.33.0.199:9000/',
+          'use_path_style_endpoint' => true,
+          'version' => 'latest',
+          'credentials' => [
+            'key'    => "GXQij0qXEekpFoBdKZfG",
+            'secret' => "fQVClQicjPfsWwRj8Ybek4A3kW73j7Nhla0N3hRH",
+          ],
+          'http'    => [
+              'verify' => false
+          ]
+        ]);
+
+    		$result = $s3->putObject([
+    			'Bucket' => 'epa',
+    			'Key'    => 'laporan/foto/'.$foto,
+    			'SourceFile' => $temp_file_location,
+          'ContentType' => 'application/pdf'
+    		]);
 
         $param = [
           'id_penyuluh' => session('idp'),
