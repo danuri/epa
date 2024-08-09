@@ -96,6 +96,7 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
        $routes->get('/', 'Admin\Validasi::index');
        $routes->get('index/(:num)', 'Admin\Validasi::index/$1');
        $routes->post('getdata/(:any)', 'Admin\Validasi::getdata/$1');
+       $routes->get('detail/(:any)', 'Admin\Validasi::detail/$1');
    });
 
    $routes->group("rekapitulasi", function ($routes) {
