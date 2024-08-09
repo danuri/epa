@@ -161,10 +161,15 @@
                         </li>
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
+                          <a class="nav-link menu-link" href="<?= site_url('admin/validasi')?>">
+                            <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Validasi Data Penyuluh</span>
+                          </a>
+                        </li>
+                        <!-- <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/penyuluh')?>">
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
                           </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
                             <i class="ri-layout-3-line"></i> <span data-key="t-dashboards">Rekapitulasi Penyuluh</span>
