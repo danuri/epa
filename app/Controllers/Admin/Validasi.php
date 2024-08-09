@@ -86,7 +86,41 @@ class Validasi extends BaseController
           </table>
         </div>
         <div class="col-6">
-
+          <form action="">
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="nameInput" class="form-label">Status Pegawai</label>
+                </div>
+                <div class="col-lg-9">
+                    <select class="form-select" name="status_pegawai">
+                      <option value="">NON ASN</option>
+                      <option value="">PNS</option>
+                      <option value="">PPPK</option>
+                      <option value="">NON PENYULUH</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="websiteUrl" class="form-label">NIK</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="url" class="form-control" id="websiteUrl" placeholder="Enter your url">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="dateInput" class="form-label">NIP</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="date" class="form-control" id="dateInput">
+                </div>
+            </div>
+            <h4>Tempat Tugas</h4>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
         </div>
       </div>
 
