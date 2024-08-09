@@ -165,14 +165,14 @@
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
                           </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
                             <i class="ri-layout-3-line"></i> <span data-key="t-dashboards">Rekapitulasi Penyuluh</span>
                           </a>
-                        </li>
+                        </li> -->
 
                         <?php if(in_array(session('level'),[4])){ ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/laporan')?>">
                             <i class="ri-pages-line"></i> <span data-key="t-dashboards">Pelaporan Penyuluh</span>
                           </a>
@@ -181,7 +181,7 @@
                           <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
                             <i class="ri-pages-line"></i> <span data-key="t-dashboards">Rekapitulasi</span>
                           </a>
-                        </li>
+                        </li> -->
                         <?php } ?>
 
                         <?php if(in_array(session('level'),[1,2,3])){ ?>
