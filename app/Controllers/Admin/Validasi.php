@@ -26,7 +26,7 @@ class Validasi extends BaseController
 
     public function getdata($kodeagama=0)
     {
-      $model = new PenyuluhModel();
+      $model = new ValidasiModel();
       $level = session('level');
       $agama = session('agama');
       $kelola = session('kodekelola');
