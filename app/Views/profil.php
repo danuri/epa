@@ -55,7 +55,7 @@
 </div>
 <script id="profil-template" type="text/x-handlebars-template">
 <div class="row">
-  <!-- <div class="col-lg-6">
+  <div class="col-lg-6">
     <button>Update Status Pegawai</button>
     <div class="card">
       <div class="card-body">
@@ -97,7 +97,7 @@
           </table>
       </div>
     </div>
-  </div> -->
+  </div>
   <div class="col-lg-6">
     <div class="card">
       <div class="card-body">

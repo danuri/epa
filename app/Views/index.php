@@ -56,7 +56,7 @@
 <script id="profil-template" type="text/x-handlebars-template">
 <div class="row">
   <div class="col-lg-6">
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-header">
         <h4>Update Data</h4>
       </div>
@@ -131,7 +131,7 @@
           </div>
         </form>
       </div>
-    </div>
+    </div> -->
     <div class="card">
       <div class="card-body">
           <table class="table table-borderless mb-0">
