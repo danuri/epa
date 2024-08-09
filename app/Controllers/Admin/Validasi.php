@@ -99,6 +99,7 @@ class Validasi extends BaseController
                       <option value="">NON PENYULUH</option>
                     </select>
                 </div>
+                <p>Non Penyuluh adalah Penyuluh yang sudah tidak aktif sebagai penyuluh. Bisa dikarenakan selesai masa kerja atau perubahan status kepegawaian ke jabatan lain selain penyuluh.</p>
             </div>
             <div class="row mb-3">
                 <div class="col-lg-3">
