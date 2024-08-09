@@ -9,7 +9,7 @@
     <meta content="Pelaporan Penyuluh Agama Kementerian Agama RI" name="description" />
     <meta content="Danunih" name="author" />
     <link rel="shortcut icon" href="<?= base_url()?>assets/images/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="<?= base_url()?>assets/js/layout.js"></script>
     <link href="<?= base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url()?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -282,7 +282,7 @@
     <script src="<?= base_url()?>assets/libs/feather-icons/feather.min.js"></script>
     <script src="<?= base_url()?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?= base_url()?>assets/js/plugins.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <script src="<?= base_url()?>assets/js/app.js"></script>
     <script type="text/javascript">
