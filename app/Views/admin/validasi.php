@@ -116,7 +116,7 @@
           <div class="card-body">
               <div class="d-flex align-items-center">
                   <div class="flex-grow-1 ms-3">
-                      <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Belum Validasi</p>
+                      <p class="text-uppercase fw-semibold fs-12 mb-1"> Belum Validasi</p>
                       <h4 class=" mb-0"><span class="counter-value" data-target="<?= $jpenyuluhnon->jumlah?>">0</span></h4>
                   </div>
               </div>

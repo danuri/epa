@@ -43,7 +43,7 @@ class Validasi extends BaseController
 
       return DataTable::of($model)
       ->add('action', function($row){
-          return '<a href="javascript:;" onclick="detail(\''.$row->id.'\')"  type="button" target="_blank" class="btn btn-sm btn-primary">Detail</a>';
+          return '<a href="javascript:;" onclick="detail(\''.$row->id.'\')"  type="button" class="btn btn-sm btn-primary">Detail</a>';
       })->toJson(true);
     }
 
