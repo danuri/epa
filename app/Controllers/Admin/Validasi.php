@@ -43,7 +43,7 @@ class Validasi extends BaseController
 
       return DataTable::of($model)
       ->add('action', function($row){
-          return '<a href="'.site_url('admin/penyuluh/detail/'.encrypt($row->id)).'" type="button" target="_blank" class="btn btn-sm btn-primary">Detail</a>';
+          return '<a href="javascript:;" onclick="detail(\''.$row->id.'\')"  type="button" target="_blank" class="btn btn-sm btn-primary">Detail</a>';
       })->toJson(true);
     }
 
@@ -51,19 +51,46 @@ class Validasi extends BaseController
     {
       $id = decrypt($id);
 
-      $model = new PenyuluhModel;
-      $data['penyuluh'] = $model->find($id);
+      $model = new ValidasiModel;
+      $penyuluh = $model->find($id);
+      ?>
+      <div class="row">
+        <div class="col-6">
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <td>Foto</td>
+                <td><img src="<?= base_url('uploads/laporan/'.$penyuluh->swafoto);?>" class="img-thumbnail"></td>
+              </tr>
+              <tr>
+                <td>NIPA</td>
+                <td><?= $penyuluh->nipa;?></td>
+              </tr>
+              <tr>
+                <td>NAMA</td>
+                <td><?= $penyuluh->nama;?></td>
+              </tr>
+              <tr>
+                <td>NIK</td>
+                <td><?= $penyuluh->nik;?></td>
+              </tr>
+              <tr>
+                <td>NIP</td>
+                <td><?= $penyuluh->nip;?></td>
+              </tr>
+              <tr>
+                <td>TUGAS KUA</td>
+                <td><?= $penyuluh->tugas_kua_nama;?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-6">
 
-      $sasus = new SasarankhususModel;
-      $data['khusus'] = $sasus->join('tm_sasaran', 'tm_sasaran.id = tr_sasaran_khusus.sasaran')->where(['id_penyuluh'=>$id])->findAll();
+        </div>
+      </div>
 
-      $sasum = new SasaranumumModel;
-      $data['umum'] = $sasum->where(['id_penyuluh'=>$id])->findAll();
-
-      $diklat = new DiklatModel;
-      $data['diklat'] = $diklat->where(['id_penyuluh'=>$id])->findAll();
-
-      return view('admin/penyuluh/detail', $data);
+      <?php
     }
 
     public function export()

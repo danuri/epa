@@ -112,7 +112,7 @@
       </div>
   </div>
   <div class="col-lg-3 col-md-6">
-      <div class="card">
+      <div class="card card-danger">
           <div class="card-body">
               <div class="d-flex align-items-center">
                   <div class="flex-grow-1 ms-3">
@@ -131,7 +131,7 @@
             <h4 class="card-title mb-0 flex-grow-1">Data Penyuluh Agama</h4>
             <div class="float-end">
               <div class="dropdown">
-                <a href="<?= site_url('admin/penyuluh/export')?>" class="btn btn-sm btn-primary">
+                <a href="<?= site_url('admin/validasi/export')?>" class="btn btn-sm btn-primary">
                   Download Excel
                 </a>
               </div>
@@ -142,10 +142,11 @@
           <table class="table table-centered table-nowrap mb-0" id="penyuluh">
             <thead class="table-light">
               <tr>
+                <th>NIPA</th>
                 <th>NIK</th>
                 <th>Nama</th>
                 <th>Status</th>
-                <th>Jenis Pendidikan</th>
+                <th>KUA</th>
                 <th>View Details</th>
               </tr>
             </thead>
@@ -157,6 +158,27 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="detail" tabindex="-1" data-bs-focus="false" aria-labelledby="detaillabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="detaillabel">Detail Penyuluh</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div id="detailbody">
+
+              </div>
+              <input type="hidden" id="detailid" name="" value="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="<?= base_url()?>assets/libs/datatables/jquery.dataTables.min.js"></script>
@@ -177,13 +199,22 @@ $(document).ready(function() {
       method: 'POST'
     },
     columns: [
+      {data: 'nipa'},
       {data: 'nik'},
       {data: 'nama'},
-      {data: 'status_pegawai'},
-      {data: 'jenis_pendidikan'},
+      {data: 'status_pegawai_validasi'},
+      {data: 'tugas_kua_nama'},
       {data: 'action', orderable: false},
     ]
   });
 });
+
+function detail(id) {
+  $('#detailbody').html('Sedang memuat...');
+  $('#detailid').val(id);
+  $('#detailbody').load('<?= site_url('admin/validasi/detail')?>/'+id);
+
+  $('#detail').modal('show');
+}
 </script>
 <?= $this->endSection() ?>
