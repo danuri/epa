@@ -166,14 +166,14 @@
 $(document).ready(function() {
 
   $('#agama').on('change', function(event) {
-    window.location.replace("<?= site_url('admin/penyuluh/index') ?>/"+$('#agama').val());
+    window.location.replace("<?= site_url('admin/validasi/index') ?>/"+$('#agama').val());
   });
 
   $('#penyuluh').DataTable({
     processing: true,
     serverSide: true,
     ajax: {
-      url: '<?= site_url('admin/penyuluh/getdata/'.$agama)?>',
+      url: '<?= site_url('admin/validasi/getdata/'.$agama)?>',
       method: 'POST'
     },
     columns: [
