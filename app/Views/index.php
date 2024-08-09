@@ -202,7 +202,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.3/axios.min.js"></script>
 <script src="<?= base_url()?>assets/js/content/profil.js"></script>
 <?= $this->endSection() ?>
