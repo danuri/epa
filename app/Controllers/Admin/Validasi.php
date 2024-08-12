@@ -86,7 +86,7 @@ class Validasi extends BaseController
           </table>
         </div>
         <div class="col-6">
-          <form action="" method="post">
+          <form action="<?= site_url('admin/validasi/save')?>" method="post">
             <div class="row mb-3">
                 <div class="col-lg-3">
                     <label for="nameInput" class="form-label">Status Pegawai</label>
@@ -106,7 +106,7 @@ class Validasi extends BaseController
                     <label for="websiteUrl" class="form-label">NIK</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="number" class="form-control" name="nik" id="nik">
+                    <input type="number" class="form-control" name="nik" id="nik" value="<?= $penyuluh->nik;?>" required>
                 </div>
             </div>
             <div class="row mb-3">
@@ -114,7 +114,9 @@ class Validasi extends BaseController
                     <label for="dateInput" class="form-label">NIP</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="number" name="nip" class="form-control" id="nip">
+                    <input type="number" name="nip" class="form-control" id="nip" value="<?= $penyuluh->nip;?>">
+                    <p>Isikan jika Penyuluh berstatus PNS/PPPK</p>
+                    <input type="hidden" name="id" value="<?= $penyuluh->id?>">
                 </div>
             </div>
             <div class="text-end">
@@ -125,6 +127,30 @@ class Validasi extends BaseController
       </div>
 
       <?php
+    }
+
+    public function save()
+    {
+      if (! $this->validate([
+          'status_pegawai' => "required",
+          'nik' => "required",
+        ])) {
+            return redirect()->back()->with('message', 'Harap isi dengan lengkap.');
+        }
+
+      $model = new ValidasiModel;
+
+      $param = [
+        'status_pegawai_validasi' => $this->rquest->getVar('status_pegawai'),
+        'nik' => $this->rquest->getVar('nik'),
+        'nip' => $this->rquest->getVar('nip'),
+      ];
+
+      $id = $this->request->getVar('id');
+
+      $update = $model->update($id,$param);
+
+      return redirect()->back()->with('message', 'Data telah diupdate');
     }
 
     public function export()
