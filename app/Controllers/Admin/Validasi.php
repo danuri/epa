@@ -157,7 +157,7 @@ class Validasi extends BaseController
     {
       $kode = session('kodekelola');
 
-      $model = new PenyuluhModel;
+      $model = new ValidasiModel;
       $data = $model->like('tugas_kabupaten', $kode, 'after')->findAll();
 
       $spreadsheet = new Spreadsheet();
