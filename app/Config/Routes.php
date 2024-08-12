@@ -98,6 +98,7 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
        $routes->post('getdata/(:any)', 'Admin\Validasi::getdata/$1');
        $routes->get('detail/(:any)', 'Admin\Validasi::detail/$1');
        $routes->post('save', 'Admin\Validasi::save');
+       $routes->get('export', 'Admin\Validasi::export');
    });
 
    $routes->group("rekapitulasi", function ($routes) {
