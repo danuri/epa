@@ -141,9 +141,9 @@ class Validasi extends BaseController
       $model = new ValidasiModel;
 
       $param = [
-        'status_pegawai_validasi' => $this->rquest->getVar('status_pegawai'),
-        'nik' => $this->rquest->getVar('nik'),
-        'nip' => $this->rquest->getVar('nip'),
+        'status_pegawai_validasi' => $this->request->getVar('status_pegawai'),
+        'nik' => $this->request->getVar('nik'),
+        'nip' => $this->request->getVar('nip'),
       ];
 
       $id = $this->request->getVar('id');
