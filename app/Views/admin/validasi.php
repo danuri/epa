@@ -385,8 +385,7 @@ function searchpegawai() {
     $('#unor').html('<option value="'+response.data.data.KODE_SATUAN_KERJA+'" selected="selected">'+response.data.data.KETERANGAN_SATUAN_KERJA+'</option>');
   })
   .catch(function (error) {
-    // handle error
-    console.log(error);
+    alert('Data tidak ditemukan');
   })
   .finally(function () {
     // always executed
