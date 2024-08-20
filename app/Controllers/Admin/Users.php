@@ -45,7 +45,7 @@ class Users extends BaseController
       if (! $this->validate([
           'nip' => "required",
           'nama' => "required",
-          'kelola_kode' => "required",
+          'kelola' => "required",
         ])) {
             return redirect()->back()->with('message', 'Harap isi dengan lengkap.');
         }
