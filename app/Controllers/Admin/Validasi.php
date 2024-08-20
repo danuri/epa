@@ -53,6 +53,16 @@ class Validasi extends BaseController
 
       $model = new ValidasiModel;
       $penyuluh = $model->find($id);
+
+      return $this->response->setJSON($penyuluh);
+    }
+
+    public function detailx($id)
+    {
+      $id = decrypt($id);
+
+      $model = new ValidasiModel;
+      $penyuluh = $model->find($id);
       ?>
       <div class="row">
         <div class="col-6">
@@ -114,9 +124,22 @@ class Validasi extends BaseController
                     <label for="dateInput" class="form-label">NIP</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="number" name="nip" class="form-control" id="nip" value="<?= $penyuluh->nip;?>">
+                    <!-- <input type="number" name="nip" class="form-control" id="nip" value="<?= $penyuluh->nip;?>"> -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="NIP Pegawai" aria-describedby="button-addon2" name="nip" id="nip" value="<?= $penyuluh->nip;?>">
+                        <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="searchpegawai()">Cari</button>
+                    </div>
                     <p>Isikan jika Penyuluh berstatus PNS/PPPK</p>
                     <input type="hidden" name="id" value="<?= $penyuluh->id?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="dateInput" class="form-label">Satuan Kerja</label>
+                </div>
+                <div class="col-lg-9">
+                  <select class="form-select" name="unor" id="unor">
+                  </select>
                 </div>
             </div>
             <div class="text-end">
@@ -126,6 +149,13 @@ class Validasi extends BaseController
         </div>
       </div>
 
+      <script type="text/javascript">
+        $(document).ready(function() {
+
+        });
+
+      </script>
+
       <?php
     }
 
@@ -134,8 +164,9 @@ class Validasi extends BaseController
       if (! $this->validate([
           'status_pegawai' => "required",
           'nik' => "required",
+          'xnik' => "required",
         ])) {
-            return redirect()->back()->with('message', 'Harap isi dengan lengkap.');
+            return redirect()->back()->with('message', 'Proses validasi belum dibuka.');
         }
 
       $model = new ValidasiModel;
