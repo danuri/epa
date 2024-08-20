@@ -61,7 +61,7 @@ class ContentSecurityPolicy extends BaseConfig
      *
      * @var list<string>|string
      */
-    public $styleSrc = 'self https://*.googleapis.com';
+    public $styleSrc = 'self';
 
     /**
      * Defines the origins from which images can be loaded.
