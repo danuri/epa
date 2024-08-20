@@ -207,6 +207,7 @@
                               <option value="PNS">PNS</option>
                               <option value="PPPK">PPPK</option>
                               <option value="NON PENYULUH">NON PENYULUH</option>
+                              <option value="PENSIUN">PENSIUN</option>
                             </select>
                             <p>Non Penyuluh adalah Penyuluh yang sudah tidak aktif sebagai penyuluh. Bisa dikarenakan selesai masa kerja atau perubahan status kepegawaian ke jabatan lain selain penyuluh.</p>
                         </div>
