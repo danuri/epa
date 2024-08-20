@@ -165,7 +165,7 @@ class Validasi extends BaseController
       $model = new ValidasiModel;
       $unor = new UnorModel;
 
-      if($$this->request->getVar('unor')){
+      if($this->request->getVar('unor')){
         $satker = $unor->find($this->request->getVar('unor'));
         $keterangan = $satker->keterangan;
       }else{
