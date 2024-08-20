@@ -43,7 +43,7 @@ class Users extends BaseController
     public function save()
     {
       if (! $this->validate([
-          'nip' => "required|is_unique[users.nip]",
+          'nip' => "required",
           'nama' => "required",
           'kelola_kode' => "required",
         ])) {
