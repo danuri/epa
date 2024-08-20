@@ -32,7 +32,7 @@ class Validasi extends BaseController
       $agama = session('agama');
       $kelola = session('kodekelola');
 
-      if(in_array($level,[2,3])){
+      if(in_array($level,[2,3,4])){
         $model->where(['agama'=>$agama]);
       }
 

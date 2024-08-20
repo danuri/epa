@@ -265,7 +265,6 @@
     <script src="<?= base_url()?>assets/libs/simplebar/simplebar.min.js"></script>
     <script src="<?= base_url()?>assets/libs/node-waves/waves.min.js"></script>
     <script src="<?= base_url()?>assets/libs/feather-icons/feather.min.js"></script>
-    <script src="<?= base_url()?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?= base_url()?>assets/js/plugins.js"></script>
     <script src="<?= base_url()?>assets/libs/select2/select2.min.js"></script>
 
