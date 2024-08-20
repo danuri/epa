@@ -165,7 +165,13 @@ class Validasi extends BaseController
       $model = new ValidasiModel;
       $unor = new UnorModel;
 
-      $satker = $unor->find($this->request->getVar('unor'));
+      if($$this->request->getVar('unor')){
+        $satker = $unor->find($this->request->getVar('unor'));
+        $keterangan = $satker->keterangan;
+      }else{
+        $keterangan = '';
+      }
+
 
       $param = [
         'status_pegawai_validasi' => $this->request->getVar('status_pegawai'),
@@ -173,7 +179,7 @@ class Validasi extends BaseController
         'nip' => $this->request->getVar('nip'),
         'keterangan' => $this->request->getVar('keterangan'),
         'kode_satker' => $this->request->getVar('unor'),
-        'nama_satker' => $satker->keterangan,
+        'nama_satker' => $keterangan,
       ];
 
       $id = $this->request->getVar('id');
