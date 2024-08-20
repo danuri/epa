@@ -158,9 +158,8 @@ class Validasi extends BaseController
       if (! $this->validate([
           'status_pegawai' => "required",
           'nik' => "required",
-          'unor' => "required",
         ])) {
-            return redirect()->back()->with('message', 'Proses validasi belum dibuka.');
+            return redirect()->back()->with('message', 'Harap isi semua.');
         }
 
       $model = new ValidasiModel;
