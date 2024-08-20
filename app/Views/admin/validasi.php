@@ -168,10 +168,102 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div id="detailbody">
-
+              <div class="row">
+                <div class="col-6">
+                  <table class="table table-bordered table-striped">
+                    <tbody>
+                      <tr>
+                        <td>NIPA</td>
+                        <td id="tabnipa"></td>
+                      </tr>
+                      <tr>
+                        <td>NAMA</td>
+                        <td id="tabnama"></td>
+                      </tr>
+                      <tr>
+                        <td>NIK</td>
+                        <td id="tabnik"></td>
+                      </tr>
+                      <tr>
+                        <td>NIP</td>
+                        <td id="tabnip"></td>
+                      </tr>
+                      <tr>
+                        <td>TUGAS KUA</td>
+                        <td id="tabkua"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <form action="<?= site_url('admin/validasi/save')?>" method="post">
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="nameInput" class="form-label">Status Pegawai</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <select class="form-select" name="status_pegawai" id="status_pegawai">
+                              <option value="NON ASN">NON ASN</option>
+                              <option value="PNS">PNS</option>
+                              <option value="PPPK">PPPK</option>
+                              <option value="NON PENYULUH">NON PENYULUH</option>
+                            </select>
+                            <p>Non Penyuluh adalah Penyuluh yang sudah tidak aktif sebagai penyuluh. Bisa dikarenakan selesai masa kerja atau perubahan status kepegawaian ke jabatan lain selain penyuluh.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">Keterangan</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <textarea name="keterangan" class="form-control" rows="3"></textarea>
+                            <p>Isi keterangan jika status NON PENYULUH</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">NIK</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" name="nik" id="nik" value="" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="dateInput" class="form-label">NIP</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="NIP Pegawai" aria-describedby="button-addon2" name="nip" id="nip">
+                                <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="searchpegawai()">Cari</button>
+                            </div>
+                            <p>Isikan jika Penyuluh berstatus PNS/PPPK</p>
+                            <input type="hidden" name="id" id="detailid" value="">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">Nama</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="nama" id="nama" value="" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="dateInput" class="form-label">Satuan Kerja</label>
+                        </div>
+                        <div class="col-lg-9">
+                          <select class="form-select" name="unor" id="unor">
+                          </select>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+                </div>
               </div>
-              <input type="hidden" id="detailid" name="" value="">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -185,6 +277,9 @@
 <script src="<?= base_url()?>assets/libs/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url()?>assets/libs/datatables/dataTables.bootstrap5.min.js"></script>
 <script src="<?= base_url()?>assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -204,19 +299,100 @@ $(document).ready(function() {
       {data: 'nik'},
       {data: 'nama'},
       {data: 'status_pegawai_validasi'},
-      {data: 'tugas_kabupaten_nama'},
+      {data: 'nama_satker'},
       {data: 'tugas_kua_nama'},
       {data: 'action', orderable: false},
     ]
   });
+
+  $('#unor').select2({
+    ajax: {
+      url: '<?= site_url() ?>admin/ajax/searchunor/',
+      data: function (params) {
+        var query = {
+          search: params.term,
+          type: 'public'
+        }
+
+        return query;
+      },
+      processResults: function (data) {
+        return {
+          results: data
+        };
+      },
+      processResults: (data, params) => {
+          const results = data.map(item => {
+            return {
+              id: item.kode_satker,
+              text: item.keterangan,
+            };
+          });
+          return {
+            results: results,
+          }
+        },
+    },
+    placeholder: 'Cari Satuan Kerja',
+    minimumInputLength: 5,
+  });
 });
 
 function detail(id) {
-  $('#detailbody').html('Sedang memuat...');
-  $('#detailid').val(id);
-  $('#detailbody').load('<?= site_url('admin/validasi/detail')?>/'+id);
+  // $('#detailbody').html('Sedang memuat...');
+  // $('#detailid').val(id);
+  // $('#detailbody').load('<?= site_url('admin/validasi/detail')?>/'+id);
+
+  axios.get('<?= site_url('admin/validasi/detail')?>/'+id)
+  .then(function (response) {
+    $('#tabnipa').html(response.data.nipa);
+    $('#tabnama').html(response.data.nama);
+    $('#tabnik').html(response.data.nik);
+    $('#tabnip').html(response.data.nip);
+    $('#tabtugas').html(response.data.nipa);
+    $('#detailid').val(response.data.id);
+
+    $('#nik').val(response.data.nik);
+    $('#keterangan').val(response.data.keterangan);
+    $('#nip').val(response.data.nip);
+    $('#status_pegawai').val(response.data.status_pegawai_validasi);
+    $('#kode_satker').val(response.data.kode_satker);
+    $('#nama_satker').val(response.data.nama_satker);
+
+    if(response.data.kode_satker){
+      $('#unor').html('<option value="'+response.data.kode_satker+'" selected="selected">'+response.data.nama_satker+'</option>');
+    }
+
+
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
 
   $('#detail').modal('show');
+
+}
+
+function searchpegawai() {
+  axios.get('http://localhost:8080/admin/ajax/searchpegawai/'+$('#nip').val())
+  .then(function (response) {
+    // handle success
+    console.log(response.data);
+    $('#nama').val(response.data.data.NAMA_LENGKAP);
+    $('#unor').html('<option value="'+response.data.data.KODE_SATUAN_KERJA+'" selected="selected">'+response.data.data.KETERANGAN_SATUAN_KERJA+'</option>');
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
 }
 </script>
 <?= $this->endSection() ?>

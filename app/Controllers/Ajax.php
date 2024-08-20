@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\KabupatenModel;
 use App\Models\CrudModel;
 use App\Models\PenyuluhModel;
+use App\Models\UnorModel;
 
 class Ajax extends BaseController
 {
@@ -80,6 +81,33 @@ class Ajax extends BaseController
         $data[] = ['id'=>$row->id,'text'=>$row->materi];
       }
 
+      return $this->response->setJSON($data);
+    }
+
+    public function searchunor()
+    {
+      $model = new UnorModel;
+      $search = $this->request->getVar('search');
+
+      $data = $model->like('nama', $search, 'both')->findAll();
+      return $this->response->setJSON($data);
+    }
+
+    public function getPegawai($nip)
+    {
+      $request = \Config\Services::request();
+      $client = \Config\Services::curlrequest();
+
+      $apiurl = 'https://api.kemenag.go.id/epa/pegawai/'.$nip;
+
+      $response = $client->request('POST', $apiurl, [
+        'headers' => [
+            'Accept'        => 'application/json'
+        ],
+        'verify' => false
+      ]);
+
+      $data = json_decode($response->getBody());
       return $this->response->setJSON($data);
     }
 }

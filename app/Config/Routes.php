@@ -19,6 +19,8 @@ $routes->group("ajax",['filter' => 'auth'], function ($routes) {
     $routes->get('getprofil', 'Ajax::getprofil');
     $routes->get('getsasaranpenyuluh', 'Ajax::getsasaranpenyuluh');
     $routes->get('getmateriopsi', 'Ajax::getmateriopsi');
+    $routes->get('searchunor', 'Ajax::searchunor');
+
 });
 
 $routes->group("penyuluh",['filter' => 'auth'], function ($routes) {
@@ -91,6 +93,8 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
 
    $routes->group("ajax", function ($routes) {
        $routes->get('getkabupaten', 'Admin\Ajax::getkabupaten');
+       $routes->get('searchpegawai/(:num)', 'Admin\Ajax::getPegawai/$1');
+       $routes->get('searchunor', 'Admin\Ajax::searchunor');
    });
    $routes->group("validasi", function ($routes) {
        $routes->get('/', 'Admin\Validasi::index');

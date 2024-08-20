@@ -8,6 +8,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use \Hermawan\DataTables\DataTable;
 use App\Models\Admin\ValidasiModel;
+use App\Models\UnorModel;
 
 class Validasi extends BaseController
 {
@@ -149,13 +150,6 @@ class Validasi extends BaseController
         </div>
       </div>
 
-      <script type="text/javascript">
-        $(document).ready(function() {
-
-        });
-
-      </script>
-
       <?php
     }
 
@@ -164,17 +158,23 @@ class Validasi extends BaseController
       if (! $this->validate([
           'status_pegawai' => "required",
           'nik' => "required",
-          'xnik' => "required",
+          'unor' => "required",
         ])) {
             return redirect()->back()->with('message', 'Proses validasi belum dibuka.');
         }
 
       $model = new ValidasiModel;
+      $unor = new UnorModel;
+
+      $satker = $unor->find($this->request->getVar('unor'));
 
       $param = [
         'status_pegawai_validasi' => $this->request->getVar('status_pegawai'),
         'nik' => $this->request->getVar('nik'),
         'nip' => $this->request->getVar('nip'),
+        'keterangan' => $this->request->getVar('keterangan'),
+        'kode_satker' => $this->request->getVar('unor'),
+        'nama_satker' => $satker->keterangan,
       ];
 
       $id = $this->request->getVar('id');
