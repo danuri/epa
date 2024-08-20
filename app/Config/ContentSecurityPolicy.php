@@ -54,7 +54,7 @@ class ContentSecurityPolicy extends BaseConfig
      *
      * @var list<string>|string
      */
-    public $scriptSrc = 'self';
+    public $scriptSrc = 'self|https://cdn.jsdelivr.net';
 
     /**
      * Lists allowed stylesheets' URLs.
