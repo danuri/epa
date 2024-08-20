@@ -377,7 +377,7 @@ function detail(id) {
 }
 
 function searchpegawai() {
-  axios.get('http://localhost:8080/admin/ajax/searchpegawai/'+$('#nip').val())
+  axios.get('<?= site_url() ?>admin/ajax/searchpegawai/'+$('#nip').val())
   .then(function (response) {
     // handle success
     console.log(response.data);
