@@ -23,7 +23,7 @@
       <div class="card-body">
         <h4 class="card-title mb-4">Info</h4>
         <p>Bagi Admin Kabupaten/Kota silahkan melakukan validasi data Penyuluh Agama melalui menu di sebelah kiri.</p>
-        <p>Periode Validasi data: 12-08-2024 s.d 23-08-2024</p>
+        <p>Periode Validasi data: 21-08-2024 s.d 13-09-2024</p>
       </div>
     </div>
   </div>
