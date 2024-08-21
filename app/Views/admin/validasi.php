@@ -146,8 +146,7 @@
                 <th>NIK</th>
                 <th>Nama</th>
                 <th>Status</th>
-                <th>Kabupaten</th>
-                <th>KUA</th>
+                <th>Satuan Kerja</th>
                 <th>View Details</th>
               </tr>
             </thead>
@@ -300,7 +299,6 @@ $(document).ready(function() {
       {data: 'nama'},
       {data: 'status_pegawai_validasi'},
       {data: 'nama_satker'},
-      {data: 'tugas_kua_nama'},
       {data: 'action', orderable: false},
     ]
   });
