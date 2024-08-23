@@ -72,7 +72,9 @@ class Penyuluh extends BaseController
       $kode = session('kodekelola');
 
       $model = new PenyuluhModel;
-      $data = $model->like('tugas_kabupaten', $kode, 'after')->findAll();
+      $model->where(['agama'=>session('agama')]);
+      $model->like('tugas_kabupaten', $kode, 'after');
+      $data = $model->findAll();
 
       $spreadsheet = new Spreadsheet();
       $sheet = $spreadsheet->getActiveSheet();
