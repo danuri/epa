@@ -209,7 +209,8 @@ class Validasi extends BaseController
       $sheet->setCellValue('F1', 'TUGAS_KABUPATEN');
       $sheet->setCellValue('G1', 'TUGAS_KECAMATAN');
       $sheet->setCellValue('H1', 'TUGAS_KUA');
-      $sheet->setCellValue('H1', 'STATUS_PEGAWAI');
+      $sheet->setCellValue('I1', 'STATUS_PEGAWAI');
+      $sheet->setCellValue('J1', 'TEMPAT_TUGAS_FINAL');
 
       $i = 2;
       foreach ($data as $row) {
@@ -222,6 +223,7 @@ class Validasi extends BaseController
         $sheet->setCellValue('G'.$i, $row->tugas_kecamatan_nama);
         $sheet->setCellValue('H'.$i, $row->tugas_kua_nama);
         $sheet->setCellValue('I'.$i, $row->status_pegawai_validasi);
+        $sheet->setCellValue('J'.$i, $row->nama_satker);
 
         $i++;
       }

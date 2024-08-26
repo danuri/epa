@@ -79,7 +79,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="<?= base_url()?>assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user user-avatar" src="<?= base_url()?>assets/images/users/avatar-1.jpg" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= session('nama')?></span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"><?= session('kelola')?></span>
@@ -270,6 +270,12 @@
 
     <script src="<?= base_url()?>assets/js/app.js"></script>
     <script type="text/javascript">
+    $(document).ready(function() {
+      $.get('https://ropeg.kemenag.go.id/api/webview/avatar/index/<?= session('niplama')?>', function(res){
+        $('.user-avatar').attr('src',res);
+      });
+    });
+
       var site_url = '<?= site_url('admin')?>';
 
       function alert($text) {
