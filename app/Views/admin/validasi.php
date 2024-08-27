@@ -146,6 +146,7 @@
                 <th>NIK</th>
                 <th>Nama</th>
                 <th>Status</th>
+                <th>Keterangan</th>
                 <th>Satuan Kerja</th>
                 <th>View Details</th>
               </tr>
@@ -217,7 +218,7 @@
                             <label for="websiteUrl" class="form-label">Keterangan</label>
                         </div>
                         <div class="col-lg-9">
-                            <textarea name="keterangan" class="form-control" rows="3"></textarea>
+                            <textarea name="keterangan" class="form-control" rows="3" id="keterangan"></textarea>
                             <p>Isi keterangan jika status NON PENYULUH</p>
                         </div>
                     </div>
@@ -298,6 +299,7 @@ $(document).ready(function() {
       {data: 'nik'},
       {data: 'nama'},
       {data: 'status_pegawai_validasi'},
+      {data: 'keterangan'},
       {data: 'nama_satker'},
       {data: 'action', orderable: false},
     ]
