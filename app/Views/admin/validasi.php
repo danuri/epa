@@ -4,6 +4,11 @@
 <link rel="stylesheet" href="<?= base_url()?>assets/libs/datatables/dataTables.bootstrap5.min.css" />
 <link rel="stylesheet" href="<?= base_url()?>assets/libs/datatables/responsive.bootstrap.min.css" />
 <link rel="stylesheet" href="<?= base_url()?>assets/libs/datatables/buttons.dataTables.min.css">
+<style media="screen">
+#penyuluh {
+  font-size: 0.7rem;
+}
+</style>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -139,7 +144,7 @@
         </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-centered table-nowrap mb-0" id="penyuluh">
+          <table class="table table-centered mb-0" id="penyuluh">
             <thead class="table-light">
               <tr>
                 <th>NIPA</th>
