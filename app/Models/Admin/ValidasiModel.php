@@ -12,7 +12,7 @@ class ValidasiModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['status_pegawai_validasi','nip','nik','kode_satker','nama_satker'];
+    protected $allowedFields    = ['status_pegawai_validasi','nip','nik','kode_satker','nama_satker','keterangan'];
 
     protected bool $allowEmptyInserts = false;
 
