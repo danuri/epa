@@ -48,6 +48,8 @@ class ValidasiModel extends Model
 
       if($jenis == 'non'){
         $wjenis = "AND status_pegawai_validasi IS NULL";
+      }else if($jenis == 'NON PENYULUH'){
+        $wjenis = "AND status_pegawai_validasi IN ('NON PENYULUH','PENSIUN','MENINGGAL DUNIA')";
       }else if($jenis != '0'){
         $wjenis = "AND status_pegawai_validasi='$jenis'";
       }else{
