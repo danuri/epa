@@ -51,6 +51,12 @@ class CrudModel extends Model
         return $query;
       }
 
+      public function getlastKab($idkab)
+      {
+        $query = $this->db->query("SELECT urut FROM penyuluh WHERE tugas_kabupaten='$idkab' AND tugas_kua='0' ORDER BY urut DESC LIMIT 0, 1")->getRow();
+        return $query;
+      }
+
       public function getLaporanBulanan($idp,$tahun)
       {
         $query = $this->db->query("SELECT month(waktu) AS created_month, year(waktu) AS created_year, COUNT(id) AS jumlah FROM tr_laporan WHERE id_penyuluh='$idp' AND waktu_tahun='$tahun' AND status='1' AND category='1' GROUP BY created_month, created_year")->getResult();

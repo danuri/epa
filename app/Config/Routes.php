@@ -86,6 +86,19 @@ $routes->group("admin/download",['filter' => 'bimasauth'], function ($routes) {
 
 });
 
+$routes->group("users", ['filter' => 'kanwilauth'], function ($routes) {
+    $routes->get('', 'Admin\Users::index');
+    $routes->post('save', 'Admin\Users::save');
+    $routes->post('getdata', 'Admin\Users::getdata');
+    $routes->get('detail/(:any)', 'Admin\Users::detail/$1');
+    $routes->get('delete/(:any)', 'Admin\Users::delete/$1');
+});
+
+$routes->group("admin/master", ['filter' => 'kanwilauth'], function ($routes) {
+    $routes->get('penyuluh/add', 'Admin\Master::penyuluhAdd');
+    $routes->post('penyuluh/save', 'Admin\Master::penyuluhSave');
+});
+
 $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
 
 
@@ -117,6 +130,9 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
        $routes->get('detail/(:any)', 'Admin\Penyuluh::detail/$1');
        $routes->get('delete/(:any)', 'Admin\Penyuluh::delete/$1');
        $routes->get('export', 'Admin\Penyuluh::export');
+
+       $routes->post('save', 'Admin\Penyuluh::save');
+       $routes->post('savenon', 'Admin\Penyuluh::savenon');
    });
 
    $routes->group("laporan", function ($routes) {
@@ -125,13 +141,5 @@ $routes->group("admin",['filter' => 'adminauth'], function ($routes) {
        $routes->get('detail/(:any)', 'Admin\Laporan::detail/$1');
        $routes->get('terima/(:any)', 'Admin\Laporan::terima/$1');
        $routes->post('tolak/(:any)', 'Admin\Laporan::tolak/$1');
-   });
-
-   $routes->group("users", function ($routes) {
-       $routes->get('', 'Admin\Users::index');
-       $routes->post('save', 'Admin\Users::save');
-       $routes->post('getdata', 'Admin\Users::getdata');
-       $routes->get('detail/(:any)', 'Admin\Users::detail/$1');
-       $routes->get('delete/(:any)', 'Admin\Users::delete/$1');
    });
 });

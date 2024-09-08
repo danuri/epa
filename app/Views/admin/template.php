@@ -58,12 +58,6 @@
             </div>
 
             <div class="d-flex align-items-center">
-
-
-
-
-
-
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
                         <i class='bx bx-fullscreen fs-22'></i>
@@ -160,36 +154,23 @@
                             </a>
                         </li>
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <?php if(session('level') == 3){ ?>
                         <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/validasi')?>">
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Validasi Data Penyuluh</span>
                           </a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/penyuluh')?>">
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
-                          </a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                          <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
-                            <i class="ri-layout-3-line"></i> <span data-key="t-dashboards">Rekapitulasi Penyuluh</span>
-                          </a>
-                        </li> -->
-
-                        <?php if(in_array(session('level'),[4])){ ?>
-                        <!-- <li class="nav-item">
-                          <a class="nav-link menu-link" href="<?= site_url('admin/laporan')?>">
-                            <i class="ri-pages-line"></i> <span data-key="t-dashboards">Pelaporan Penyuluh</span>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
-                            <i class="ri-pages-line"></i> <span data-key="t-dashboards">Rekapitulasi</span>
+                            <i class="ri-layout-3-line"></i> <span data-key="t-dashboards">Rekapitulasi Penyuluh</span>
                           </a>
-                        </li> -->
-                        <?php } ?>
+                        </li>
 
-                        <?php if(in_array(session('level'),[1,2,3])){ ?>
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Master</span></li>
 
                         <li class="nav-item">
@@ -197,9 +178,38 @@
                             <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Admin Satker</span>
                           </a>
                         </li>
+
                         <?php } ?>
 
-                        <?php if(in_array(session('level'),[2])){ ?>
+                        <?php if(session('level') == 4){ ?>
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/validasi')?>">
+                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Validasi Data Penyuluh</span>
+                            </a>
+                          </li>
+                          <!-- <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/penyuluh')?>">
+                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
+                              <i class="ri-layout-3-line"></i> <span data-key="t-dashboards">Rekapitulasi Penyuluh</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/laporan')?>">
+                              <i class="ri-pages-line"></i> <span data-key="t-dashboards">Pelaporan Penyuluh</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
+                              <i class="ri-pages-line"></i> <span data-key="t-dashboards">Rekapitulasi</span>
+                            </a>
+                          </li> -->
+                        <?php } ?>
+
+                        <?php if(session('level') == 2){ ?>
                           <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('admin/download')?>">
                               <i class="ri-file-list-3-line"></i> <span data-key="t-dashboards">Download</span>

@@ -8,9 +8,12 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use \Hermawan\DataTables\DataTable;
 use App\Models\Admin\PenyuluhModel;
+use App\Models\CrudModel;
 use App\Models\SasarankhususModel;
 use App\Models\SasaranumumModel;
+use App\Models\KabupatenModel;
 use App\Models\DiklatModel;
+use App\Models\UnorModel;
 
 class Penyuluh extends BaseController
 {
@@ -22,6 +25,10 @@ class Penyuluh extends BaseController
         $data['jpenyuluhpns'] = $model->jumlahPenyuluh('PNS');
         $data['jpenyuluhpppk'] = $model->jumlahPenyuluh('PPPK');
         $data['jpenyuluhnon'] = $model->jumlahPenyuluh('NON PNS');
+
+        $kabm = new KabupatenModel;
+        $data['kabupaten'] = $kabm->where('id_prov',session('kodekelola'))->findAll();
+
         return view('admin/penyuluh/index', $data);
     }
 
@@ -65,6 +72,117 @@ class Penyuluh extends BaseController
       $data['diklat'] = $diklat->where(['id_penyuluh'=>$id])->findAll();
 
       return view('admin/penyuluh/detail', $data);
+    }
+
+    public function save()
+    {
+      // validasi
+      if (! $this->validate([
+          'nip' => "required|is_unique[penyuluh.nip]",
+          'tmt_awal' => "required",
+        ])) {
+          return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap.']);
+        }
+
+      $jk = $this->request->getVar('jk');
+      $kabupaten = $this->request->getVar('kabupaten');
+      $crud = new CrudModel;
+
+      $cekurut = $crud->getlastKab($kabupaten);
+
+      if($cekurut){
+        $urutan = $cekurut->urut+1;
+      }else{
+        $urutan = 1;
+      }
+
+      $nipa = $this->gennipa($kabupaten,$urutan,1,$jk);
+
+      $unor = new UnorModel;
+      $satker = $unor->find($this->request->getVar('unor'));
+      $keterangan = $satker->keterangan;
+
+      $model = new PenyuluhModel;
+      $data   = [
+        'urut'  => $urutan,
+        'nip'  => $this->request->getVar('nip'),
+        'nipa'  => $nipa,
+        'password'  => $nipa,
+        'nik'  => $this->request->getVar('nik'),
+        'nama'  => $this->request->getVar('nama'),
+        'pangkat'  => $this->request->getVar('pangkat'),
+        'golongan'  => $this->request->getVar('golongan'),
+        'jabatan'  => $this->request->getVar('jabatan'),
+        'tmt_awal'  => $this->request->getVar('tmt_awal'),
+        'agama'  => session('agama'),
+        'tempat_lahir'  => $this->request->getVar('tempat_lahir'),
+        'tanggal_lahir'  => $this->request->getVar('tanggal_lahir'),
+        'jenis_kelamin'  => $this->request->getVar('jenis_kelamin'),
+        'tugas_provinsi'  => substr($kabupaten,2),
+        'tugas_kabupaten'  => $kabupaten,
+        'status_pegawai_validasi'  => $this->request->getVar('status_pegawai'),
+        'kode_satker'  => $this->request->getVar('unor'),
+        'nama_satker'  => $keterangan,
+      ];
+      $insert = $model->insert($data);
+
+      return $this->response->setJSON(['status'=>'success','message'=>'Data telah ditambahkan.']);
+    }
+
+    public function savenon()
+    {
+      // validasi
+      if (! $this->validate([
+          'nik' => "required",
+          'tmt_awal' => "required",
+        ])) {
+          return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap.']);
+        }
+
+      $jenis_kelamin = $this->request->getVar('jenis_kelamin');
+      if($jenis_kelamin == 'Laki-Laki'){
+        $jk = 1;
+      }else{
+        $jk = 0;
+      }
+      $kabupaten = $this->request->getVar('kabupaten');
+      $crud = new CrudModel;
+
+      $cekurut = $crud->getlastKab($kabupaten);
+
+      if($cekurut){
+        $urutan = $cekurut->urut+1;
+      }else{
+        $urutan = 1;
+      }
+
+      $nipa = $this->gennipa($kabupaten,$urutan,0,$jk);
+
+      $unor = new UnorModel;
+      $satker = $unor->find($this->request->getVar('unor'));
+      $keterangan = $satker->keterangan;
+
+      $model = new PenyuluhModel;
+      $data   = [
+        'urut'  => $urutan,
+        'nipa'  => $nipa,
+        'password'  => $nipa,
+        'nik'  => $this->request->getVar('nik'),
+        'nama'  => $this->request->getVar('nama'),
+        'tmt_awal'  => $this->request->getVar('tmt_awal'),
+        'agama'  => session('agama'),
+        'tempat_lahir'  => $this->request->getVar('tempat_lahir'),
+        'tanggal_lahir'  => $this->request->getVar('tanggal_lahir'),
+        'jenis_kelamin'  => $jenis_kelamin,
+        'tugas_provinsi'  => substr($kabupaten,2),
+        'tugas_kabupaten'  => $kabupaten,
+        'status_pegawai_validasi'  => 'Non ASN',
+        'kode_satker'  => $this->request->getVar('unor'),
+        'nama_satker'  => $keterangan,
+      ];
+      $insert = $model->insert($data);
+
+      return $this->response->setJSON(['status'=>'success','message'=>'Data telah ditambahkan.']);
     }
 
     public function export()
@@ -147,5 +265,23 @@ class Penyuluh extends BaseController
       header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
       header('Content-Disposition: attachment; filename="Data Penyuluh'.$tanggal.'.xlsx"');
       $writer->save('php://output');
+    }
+
+    public function gennipa($kabupaten,$urutan,$pns,$jk)
+    {
+      $crud = new CrudModel;
+      $agama = session('agama');
+
+      $index = '000';
+      if(strlen($urutan) == 1){
+        $index = '00'.$urutan;
+      }else if(strlen($urutan) == 2){
+        $index = '0'.$urutan;
+      }else{
+        $index = $urutan;
+      }
+
+      $nipa = $agama.$kabupaten.'000'.$pns.$jk.$index;
+      return $nipa;
     }
 }

@@ -110,6 +110,15 @@
                 <a href="<?= site_url('admin/penyuluh/export')?>" class="btn btn-sm btn-primary">
                   Download Excel
                 </a>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tambah Data Penyuluh
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:;" onclick="addAsn()">ASN</a>
+                        <a class="dropdown-item" href="javascript:;" onclick="addNon()">Non ASN</a>
+                    </div>
+                </div>
               </div>
             </div>
         </div>
@@ -133,11 +142,234 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="addNon" tabindex="-1" data-bs-focus="false" aria-labelledby="detaillabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title h4" id="detaillabel">Tambah Data Penyuluh Non ASN</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <form action="<?= site_url('admin/penyuluh/savenon')?>" method="post" id="savenon">
+                <div class="col-12">
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="websiteUrl" class="form-label">NIK</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <input type="number" class="form-control" name="nik" value="" required>
+                      </div>
+                  </div>
+
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="websiteUrl" class="form-label">Nama</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <input type="text" class="form-control" name="nama" value="" required>
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="websiteUrl" class="form-label">Jenis Kelamin</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <select class="form-select" name="jenis_kelamin">
+                            <option value="Laki-Laki">Laki-Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="websiteUrl" class="form-label">Tempat Lahir</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <input type="text" class="form-control" name="tempat_lahir" value="">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="websiteUrl" class="form-label">Tanggal Lahir</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <input type="date" class="form-control" name="tanggal_lahir" value="">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="websiteUrl" class="form-label">TMT Awal</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <input type="date" class="form-control" name="tmt_awal" value="">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="dateInput" class="form-label">Satuan Kerja</label>
+                      </div>
+                      <div class="col-lg-9">
+                        <select class="form-select" name="unor" id="unor">
+                        </select>
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-lg-3">
+                          <label for="dateInput" class="form-label">Kabupaten</label>
+                      </div>
+                      <div class="col-lg-9">
+                        <select class="form-select" name="kabupaten">
+                          <?php foreach ($kabupaten as $row) {
+                            echo '<option value="'.$row->id_kab.'">'.$row->kabupaten.'</option>';
+                          } ?>
+                        </select>
+                      </div>
+                  </div>
+                </div>
+            </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" onclick="$('#savenon').submit()">Simpan</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addAsn" tabindex="-1" data-bs-focus="false" aria-labelledby="detaillabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="detaillabel">Tambah Data Penyuluh</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <form action="<?= site_url('admin/penyuluh/save')?>" method="post" id="saveasn">
+                  <div class="col-12">
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="dateInput" class="form-label">NIP</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="NIP Pegawai" aria-describedby="button-addon2" name="nip" id="nip2">
+                                <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="searchpegawai()">Cari</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="nameInput" class="form-label">Status Pegawai</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <select class="form-select" name="status_pegawai" id="status_pegawai2">
+                              <option value="PNS">PNS</option>
+                              <option value="PPPK">PPPK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">NIK</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" name="nik" id="nik2" value="" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">Nama</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="nama" id="nama2" value="" readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">Jenis Kelamin</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <select class="form-select" name="jenis_kelamin" id="jenis_kelamin2">
+                              <option value="Laki-Laki">Laki-Laki</option>
+                              <option value="Perempuan">Perempuan</option>
+                            </select>
+                            <input type="hidden" name="jk" id="jk2" value="">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">pangkat/Golongan</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="pangkat" id="pangkat2" value="" readonly>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="golongan" id="golongan2" value="" readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">Jabatan</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="jabatan" id="jabatan2" value="" readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">TMT Awal</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="tmt_awal" id="tmt_awal2" value="">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="dateInput" class="form-label">Satuan Kerja</label>
+                        </div>
+                        <div class="col-lg-9">
+                          <select class="form-select" name="unor" id="unor2">
+                          </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="dateInput" class="form-label">Kabupaten</label>
+                        </div>
+                        <div class="col-lg-9">
+                          <select class="form-select" name="kabupaten" id="kabupaten2">
+                            <?php foreach ($kabupaten as $row) {
+                              echo '<option value="'.$row->id_kab.'">'.$row->kabupaten.'</option>';
+                            } ?>
+                          </select>
+                          <input type="hidden" name="tanggal_lahir" id="tanggal_lahir2" value="">
+                          <input type="hidden" name="tempat_lahir" id="tempat_lahir2" value="">
+                        </div>
+                    </div>
+                  </div>
+              </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" onclick="$('#saveasn').submit()">Simpan</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="<?= base_url()?>assets/libs/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url()?>assets/libs/datatables/dataTables.bootstrap5.min.js"></script>
 <script src="<?= base_url()?>assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="<?= base_url()?>assets/js/axios.min.js"></script>
+<script src="<?= base_url()?>assets/js/jquery.form.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -145,7 +377,7 @@ $(document).ready(function() {
     window.location.replace("<?= site_url('admin/penyuluh/index') ?>/"+$('#agama').val());
   });
 
-  $('#penyuluh').DataTable({
+  var table = new DataTable('#penyuluh', {
     processing: true,
     serverSide: true,
     ajax: {
@@ -160,6 +392,132 @@ $(document).ready(function() {
       {data: 'action', orderable: false},
     ]
   });
+
+  $('#unor2').select2({
+    ajax: {
+      url: '<?= site_url() ?>admin/ajax/searchunor/',
+      data: function (params) {
+        var query = {
+          search: params.term,
+          type: 'public'
+        }
+
+        return query;
+      },
+      processResults: function (data) {
+        return {
+          results: data
+        };
+      },
+      processResults: (data, params) => {
+          const results = data.map(item => {
+            return {
+              id: item.kode_satker,
+              text: item.keterangan,
+            };
+          });
+          return {
+            results: results,
+          }
+        },
+    },
+    placeholder: 'Cari Satuan Kerja',
+    minimumInputLength: 5,
+  });
+
+  $('#unor').select2({
+    ajax: {
+      url: '<?= site_url() ?>admin/ajax/searchunor/',
+      data: function (params) {
+        var query = {
+          search: params.term,
+          type: 'public'
+        }
+
+        return query;
+      },
+      processResults: function (data) {
+        return {
+          results: data
+        };
+      },
+      processResults: (data, params) => {
+          const results = data.map(item => {
+            return {
+              id: item.kode_satker,
+              text: item.keterangan,
+            };
+          });
+          return {
+            results: results,
+          }
+        },
+    },
+    placeholder: 'Cari Satuan Kerja',
+    minimumInputLength: 5,
+  });
+
+  $('#saveasn').submit(function() {
+      $(this).ajaxSubmit({
+        success: function(responseText, statusText, xhr, $form){
+          alert(responseText.message);
+          if(responseText.status == 'success'){
+              table.ajax.reload(null, false);
+              $('#addAsn').modal('hide');
+          }
+        }
+      });
+      return false;
+  });
+
+  $('#savenon').submit(function() {
+      $(this).ajaxSubmit({
+        success: function(responseText, statusText, xhr, $form){
+          alert(responseText.message);
+          if(responseText.status == 'success'){
+              table.ajax.reload(null, false);
+              $('#addAsn').modal('hide');
+          }
+        }
+      });
+      return false;
+  });
 });
+
+function searchpegawai() {
+  axios.get('<?= site_url() ?>admin/ajax/searchpegawai/'+$('#nip2').val())
+  .then(function (response) {
+    // handle success
+    console.log(response.data);
+    $('#nama2').val(response.data.data.NAMA_LENGKAP);
+    $('#unor2').html('<option value="'+response.data.data.KODE_SATUAN_KERJA+'" selected="selected">'+response.data.data.KETERANGAN_SATUAN_KERJA+'</option>');
+    $('#pangkat2').val(response.data.data.PANGKAT);
+    $('#golongan2').val(response.data.data.GOL_RUANG);
+    $('#jabatan2').val(response.data.data.TAMPIL_JABATAN);
+    $('#tempat_lahir2').val(response.data.data.TEMPAT_LAHIR);
+    $('#tanggal_lahir2').val(response.data.data.TANGGAL_LAHIR);
+    $('#jk2').val(response.data.data.JENIS_KELAMIN);
+
+    if(response.data.data.JENIS_KELAMIN == '1'){
+      $('#jenis_kelamin2').val('Laki-Laki');
+    }else{
+      $('#jenis_kelamin2').val('Perempuan');
+    }
+  })
+  .catch(function (error) {
+    alert('Data tidak ditemukan');
+  })
+  .finally(function () {
+    // always executed
+  });
+}
+
+function addNon() {
+  $('#addNon').modal('show');
+}
+
+function addAsn() {
+  $('#addAsn').modal('show');
+}
 </script>
 <?= $this->endSection() ?>
