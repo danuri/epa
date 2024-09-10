@@ -464,9 +464,9 @@ $(document).ready(function() {
           alert(responseText.message);
           if(responseText.status == 'success'){
               table.ajax.reload(null, false);
-              $("#loverlay").fadeOut(300);
               $('#addAsn').modal('hide');
           }
+          $("#loverlay").fadeOut(300);
         }
       });
       return false;
@@ -478,9 +478,9 @@ $(document).ready(function() {
           alert(responseText.message);
           if(responseText.status == 'success'){
               table.ajax.reload(null, false);
-              $("#loverlay").fadeOut(300);
               $('#addAsn').modal('hide');
           }
+          $("#loverlay").fadeOut(300);
         }
       });
       return false;
