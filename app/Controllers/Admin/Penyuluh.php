@@ -79,6 +79,7 @@ class Penyuluh extends BaseController
       // validasi
       if (! $this->validate([
           'nip' => "required|is_unique[penyuluh.nip]",
+          'nik' => "required|is_unique[penyuluh.nik]",
           'tmt_awal' => "required",
         ])) {
           return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap.']);
@@ -135,7 +136,7 @@ class Penyuluh extends BaseController
     {
       // validasi
       if (! $this->validate([
-          'nik' => "required",
+          'nik' => "required|is_unique[penyuluh.nik]",
           'tmt_awal' => "required",
         ])) {
           return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap.']);
