@@ -86,7 +86,7 @@ $routes->group("admin/download",['filter' => 'bimasauth'], function ($routes) {
 
 });
 
-$routes->group("users", ['filter' => 'kanwilauth'], function ($routes) {
+$routes->group("admin/users", ['filter' => 'kanwilauth'], function ($routes) {
     $routes->get('', 'Admin\Users::index');
     $routes->post('save', 'Admin\Users::save');
     $routes->post('getdata', 'Admin\Users::getdata');
