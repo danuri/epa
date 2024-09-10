@@ -177,7 +177,7 @@ class Penyuluh extends BaseController
         'tempat_lahir'  => $this->request->getVar('tempat_lahir'),
         'tanggal_lahir'  => $this->request->getVar('tanggal_lahir'),
         'jenis_kelamin'  => $jenis_kelamin,
-        'tugas_provinsi'  => substr($kabupaten,2),
+        'tugas_provinsi'  => session('kodekelola'),
         'tugas_kabupaten'  => $kabupaten,
         'tugas_kecamatan'  => 0,
         'tugas_kua'  => 0,
