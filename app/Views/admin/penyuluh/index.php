@@ -458,11 +458,13 @@ $(document).ready(function() {
   });
 
   $('#saveasn').submit(function() {
+      loader();
       $(this).ajaxSubmit({
         success: function(responseText, statusText, xhr, $form){
           alert(responseText.message);
           if(responseText.status == 'success'){
               table.ajax.reload(null, false);
+              $("#loverlay").fadeOut(300);
               $('#addAsn').modal('hide');
           }
         }
@@ -476,6 +478,7 @@ $(document).ready(function() {
           alert(responseText.message);
           if(responseText.status == 'success'){
               table.ajax.reload(null, false);
+              $("#loverlay").fadeOut(300);
               $('#addAsn').modal('hide');
           }
         }
