@@ -15,11 +15,56 @@
     <link href="<?= base_url()?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url()?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url()?>assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <style media="screen">
+  	#loverlay{
+  	position: fixed;
+  	top: 0;
+  	z-index: 100000;
+  	width: 100%;
+  	height:100%;
+  	display: none;
+  	background: rgba(0,0,0,0.6);
+  	}
+  	.cv-spinner {
+  	height: 100%;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	}
+  	.spinner {
+  	width: 40px;
+  	height: 40px;
+  	border: 4px #ddd solid;
+  	border-top: 4px #2e93e6 solid;
+  	border-radius: 50%;
+  	animation: sp-anime 0.8s infinite linear;
+  	}
+  	@keyframes sp-anime {
+  	100% {
+  		transform: rotate(360deg);
+  	}
+  	}
+  	.is-hide{
+  	display:none;
+  	}
+    .progressx {
+      width: 100px;
+    	height: 40px;
+      margin-top: 25px;
+      padding-left: 10px;
+      color: #fff;
+  	}
+  	</style>
     <?= $this->renderSection('style') ?>
 </head>
 
 <body>
-
+  <div id="loverlay">
+  <div class="cv-spinner">
+    <span class="spinner"></span>
+    <span class="progressx">Loading...</span>
+  </div>
+  </div>
     <!-- Begin page -->
     <div id="layout-wrapper">
 
@@ -309,6 +354,10 @@
         <?php
       }
       ?>
+
+      function loader() {
+        $("#loverlay").fadeIn(300);
+      }
     </script>
     <?= $this->renderSection('script') ?>
 </body>
