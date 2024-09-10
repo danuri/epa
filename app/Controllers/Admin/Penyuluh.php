@@ -82,7 +82,7 @@ class Penyuluh extends BaseController
           'nik' => "required|is_unique[penyuluh.nik]",
           'tmt_awal' => "required",
         ])) {
-          return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap.']);
+          return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap dan pastikan NIP/NIK belum terdaftar.']);
         }
 
       $jk = $this->request->getVar('jk');
@@ -139,7 +139,7 @@ class Penyuluh extends BaseController
           'nik' => "required|is_unique[penyuluh.nik]",
           'tmt_awal' => "required",
         ])) {
-          return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap.']);
+          return $this->response->setJSON(['status'=>'error','message'=>'Data gagal ditambahkan. Isi dengan lengkap. Isi dengan lengkap dan pastikan NIP/NIK belum terdaftar.']);
         }
 
       $jenis_kelamin = $this->request->getVar('jenis_kelamin');
