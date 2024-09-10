@@ -478,7 +478,7 @@ $(document).ready(function() {
           alert(responseText.message);
           if(responseText.status == 'success'){
               table.ajax.reload(null, false);
-              $('#addAsn').modal('hide');
+              $('#addNon').modal('hide');
           }
           $("#loverlay").fadeOut(300);
         }
