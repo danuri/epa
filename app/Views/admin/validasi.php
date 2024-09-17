@@ -153,6 +153,7 @@
                 <th>Status</th>
                 <th>Keterangan</th>
                 <th>Satuan Kerja</th>
+                <th>Status Validasi</th>
                 <th>View Details</th>
               </tr>
             </thead>
@@ -306,6 +307,7 @@ $(document).ready(function() {
       {data: 'status_pegawai_validasi'},
       {data: 'keterangan'},
       {data: 'nama_satker'},
+      {data: 'status_validasi_admin'},
       {data: 'action', orderable: false},
     ]
   });
