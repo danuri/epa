@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use Dompdf\Dompdf;
+use Aws\S3\S3Client;
 use \Hermawan\DataTables\DataTable;
 use App\Models\LaporanModel;
 use App\Models\PenyuluhModel;
@@ -74,9 +75,9 @@ class Laporan extends BaseController
           'foto' => [
               'label' => 'Foto',
               'rules' => [
-                  'uploaded[lampiran]',
-                  'mime_in[lampiran,image/jpeg,image/png]',
-                  'max_size[lampiran,500]',
+                  'uploaded[foto]',
+                  'mime_in[foto,image/jpeg,image/png]',
+                  'max_size[foto,500]',
               ],
           ]
         ])) {
@@ -166,7 +167,7 @@ class Laporan extends BaseController
           'waktu_bulan' => date('n',strtotime($this->request->getVar('waktu'))),
           'waktu_tahun' => date('Y',strtotime($this->request->getVar('waktu'))),
           'category' => 2,
-          'status' => 1,
+          'status' => 0,
           'verifikator' => session('tugas_kabupaten')
         ];
 

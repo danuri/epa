@@ -216,6 +216,7 @@
                               <option value="PENSIUN">PENSIUN</option>
                               <option value="MENINGGAL DUNIA">MENINGGAL DUNIA</option>
                             </select>
+                            <p>Jika tidak lagi sebagai penyuluh, silahkan pilih Non Penyuluh</p>
                             <p>Non Penyuluh adalah Penyuluh yang sudah tidak aktif sebagai penyuluh. Bisa dikarenakan selesai masa kerja atau perubahan status kepegawaian ke jabatan lain selain penyuluh.</p>
                         </div>
                     </div>
@@ -264,6 +265,7 @@
                         <div class="col-lg-9">
                           <select class="form-select" name="unor" id="unor">
                           </select>
+                          <p>Wajib diisi jika penyuluh masih aktif</p>
                         </div>
                     </div>
                     <div class="text-end">

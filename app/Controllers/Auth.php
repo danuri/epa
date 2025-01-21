@@ -16,7 +16,7 @@ class Auth extends BaseController
   public function login()
   {
     if( !$this->validate([
-      'usernamex' 	=> 'required',
+      'username' 	=> 'required',
       'password' 	=> 'required',
     ]))
     {

@@ -143,8 +143,8 @@
               </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="$('#addform').submit()">Save Changes</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary" onclick="$('#addform').submit()">Simpan</button>
             </div>
 
         </div><!-- /.modal-content -->

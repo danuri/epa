@@ -172,7 +172,6 @@ class Validasi extends BaseController
         $keterangan = '';
       }
 
-
       $param = [
         'status_pegawai_validasi' => $this->request->getVar('status_pegawai'),
         'nik' => $this->request->getVar('nik'),
