@@ -255,9 +255,30 @@
                         <?php } ?>
 
                         <?php if(session('level') == 2){ ?>
+                          
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/penyuluh')?>">
+                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Data Penyuluh</span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/rekapitulasi')?>">
+                              <i class="ri-pages-line"></i> <span data-key="t-dashboards">Rekapitulasi</span>
+                            </a>
+                          </li>
+
                           <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('admin/download')?>">
                               <i class="ri-file-list-3-line"></i> <span data-key="t-dashboards">Download</span>
+                            </a>
+                          </li>
+
+                          <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Master</span></li>
+
+                          <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('admin/users')?>">
+                              <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Admin Satker</span>
                             </a>
                           </li>
                         <?php } ?>
