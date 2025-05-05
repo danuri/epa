@@ -46,8 +46,8 @@ class Validasi extends BaseController
 
       return DataTable::of($model)
       ->add('action', function($row){
-          return '<button class="btn btn-light btn-sm" type="button" fdprocessedid="s8nma9">'.$row->hasil_verifikasi.'</button>
-                <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" fdprocessedid="870z"></button>
+          return '<button class="btn btn-light btn-sm" type="button">'.$row->hasil_verifikasi.'</button>
+                <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="'.site_url('admin/validasi/status/'.encrypt($row->id).'/1').'">Aktif</a>
                     <a class="dropdown-item" href="'.site_url('admin/validasi/status/'.encrypt($row->id).'/0').'" onclick="">Non Aktif</a>
