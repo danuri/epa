@@ -17,10 +17,6 @@ class Validasi extends BaseController
         $model = new ValidasiModel();
         $data['agama'] = ($agama)?$agama:session('agama');
         $data['jpenyuluh'] = $model->jumlahPenyuluh(0);
-        $data['jpenyuluhpns'] = $model->jumlahPenyuluh('PNS');
-        $data['jpenyuluhpppk'] = $model->jumlahPenyuluh('PPPK');
-        $data['jpenyuluhnonasn'] = $model->jumlahPenyuluh('NON ASN');
-        $data['jpenyuluhnon'] = $model->jumlahPenyuluh('NON PENYULUH');
         $data['jnonvalid'] = $model->jumlahPenyuluh('non');
         return view('admin/verifikasi', $data);
     }
