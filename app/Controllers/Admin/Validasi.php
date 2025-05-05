@@ -46,7 +46,12 @@ class Validasi extends BaseController
 
       return DataTable::of($model)
       ->add('action', function($row){
-          return '<a href="javascript:;" onclick="detail(\''.encrypt($row->id).'\')"  type="button" class="btn btn-sm btn-primary">Detail</a>';
+          return '<button class="btn btn-light btn-sm" type="button" fdprocessedid="s8nma9">'.$row->hasil_verifikasi.'</button>
+                <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" fdprocessedid="870z"></button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="'.site_url('admin/validasi/status/'.encrypt($row->id).'/1').'">Aktif</a>
+                    <a class="dropdown-item" href="'.site_url('admin/validasi/status/'.encrypt($row->id).'/0').'" onclick="">Non Aktif</a>
+                </div>';
       })->toJson(true);
     }
 
@@ -188,6 +193,16 @@ class Validasi extends BaseController
       $update = $model->update($id,$param);
 
       return redirect()->back()->with('message', 'Data telah diupdate');
+    }
+
+    function setstatus($id,$status) {
+      $model = new ValidasiModel;
+
+      $id = decrypt($id);
+      $status = ($status == 1)?'Aktif':'Non Aktif';
+      $model->update($id, ['hasil_verifikasi'=>$status]);
+
+      return redirect()->back()->with('message', 'Status telah diupdate');
     }
 
     public function export()
