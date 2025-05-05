@@ -51,7 +51,7 @@ class ValidasiModel extends Model
       }else if($jenis == 'NON PENYULUH'){
         $wjenis = "AND status_pegawai_validasi IN ('NON PENYULUH','PENSIUN','MENINGGAL DUNIA')";
       }else if($jenis != '0'){
-        $wjenis = "AND is_verif='1'";
+        $wjenis = "AND status_pegawai_validasi='$jenis'";
       }else{
         $wjenis = "";
       }
@@ -61,7 +61,7 @@ class ValidasiModel extends Model
       }else if($level == 3){
         $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$kelola' $wjenis");
       }else{
-        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_kabupaten='$kelola' $wjenis");
+        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_kabupaten='$kelola' AND is_verif='1' $wjenis");
       }
       return $query->getRow();
     }
