@@ -22,7 +22,7 @@ class Validasi extends BaseController
         $data['jpenyuluhnonasn'] = $model->jumlahPenyuluh('NON ASN');
         $data['jpenyuluhnon'] = $model->jumlahPenyuluh('NON PENYULUH');
         $data['jnonvalid'] = $model->jumlahPenyuluh('non');
-        return view('admin/validasi', $data);
+        return view('admin/verifikasi', $data);
     }
 
     public function getdata($kodeagama=0)
