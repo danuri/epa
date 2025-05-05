@@ -154,7 +154,6 @@
                 <th>Keterangan</th>
                 <th>Satuan Kerja</th>
                 <th>Status Validasi</th>
-                <th>View Details</th>
               </tr>
             </thead>
             <tbody>
@@ -164,122 +163,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="modal fade" id="detail" tabindex="-1" data-bs-focus="false" aria-labelledby="detaillabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title h4" id="detaillabel">Detail Penyuluh</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-6">
-                  <table class="table table-bordered table-striped">
-                    <tbody>
-                      <tr>
-                        <td>NIPA</td>
-                        <td id="tabnipa"></td>
-                      </tr>
-                      <tr>
-                        <td>NAMA</td>
-                        <td id="tabnama"></td>
-                      </tr>
-                      <tr>
-                        <td>NIK</td>
-                        <td id="tabnik"></td>
-                      </tr>
-                      <tr>
-                        <td>NIP</td>
-                        <td id="tabnip"></td>
-                      </tr>
-                      <tr>
-                        <td>TUGAS KUA</td>
-                        <td id="tabkua"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-6">
-                  <form action="<?= site_url('admin/validasi/save')?>" method="post">
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label for="nameInput" class="form-label">Status Pegawai</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <select class="form-select" name="status_pegawai" id="status_pegawai">
-                              <option value="NON ASN">NON ASN</option>
-                              <option value="PNS">PNS</option>
-                              <option value="PPPK">PPPK</option>
-                              <option value="NON PENYULUH">NON PENYULUH</option>
-                              <option value="PENSIUN">PENSIUN</option>
-                              <option value="MENINGGAL DUNIA">MENINGGAL DUNIA</option>
-                            </select>
-                            <p>Jika tidak lagi sebagai penyuluh, silahkan pilih Non Penyuluh</p>
-                            <p>Non Penyuluh adalah Penyuluh yang sudah tidak aktif sebagai penyuluh. Bisa dikarenakan selesai masa kerja atau perubahan status kepegawaian ke jabatan lain selain penyuluh.</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label for="websiteUrl" class="form-label">Keterangan</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <textarea name="keterangan" class="form-control" rows="3" id="keterangan"></textarea>
-                            <p>Isi keterangan jika status NON PENYULUH</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label for="websiteUrl" class="form-label">NIK</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <input type="number" class="form-control" name="nik" id="nik" value="" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label for="dateInput" class="form-label">NIP</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="input-group">
-                                <input type="text" class="form-control" aria-label="NIP Pegawai" aria-describedby="button-addon2" name="nip" id="nip">
-                                <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="searchpegawai()">Cari</button>
-                            </div>
-                            <p>Isikan jika Penyuluh berstatus PNS/PPPK</p>
-                            <input type="hidden" name="id" id="detailid" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label for="websiteUrl" class="form-label">Nama</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama" id="nama" value="" disabled>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label for="dateInput" class="form-label">Satuan Kerja</label>
-                        </div>
-                        <div class="col-lg-9">
-                          <select class="form-select" name="unor" id="unor">
-                          </select>
-                          <p>Wajib diisi jika penyuluh masih aktif</p>
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
 </div>
 
 <?= $this->endSection() ?>
