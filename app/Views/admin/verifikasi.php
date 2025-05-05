@@ -69,54 +69,6 @@
       </div>
   </div>
   <div class="col-lg-3 col-md-6">
-      <div class="card">
-          <div class="card-body">
-              <div class="d-flex align-items-center">
-                  <div class="flex-grow-1 ms-3">
-                      <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> PNS</p>
-                      <h4 class=" mb-0"><span class="counter-value" data-target="<?= $jpenyuluhpns->jumlah?>">0</span></h4>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
-      <div class="card">
-          <div class="card-body">
-              <div class="d-flex align-items-center">
-                  <div class="flex-grow-1 ms-3">
-                      <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> PPPK</p>
-                      <h4 class=" mb-0"><span class="counter-value" data-target="<?= $jpenyuluhpppk->jumlah?>">0</span></h4>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
-      <div class="card">
-          <div class="card-body">
-              <div class="d-flex align-items-center">
-                  <div class="flex-grow-1 ms-3">
-                      <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Non ASN</p>
-                      <h4 class=" mb-0"><span class="counter-value" data-target="<?= $jpenyuluhnonasn->jumlah?>">0</span></h4>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
-      <div class="card">
-          <div class="card-body">
-              <div class="d-flex align-items-center">
-                  <div class="flex-grow-1 ms-3">
-                      <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Non Penyuluh</p>
-                      <h4 class=" mb-0"><span class="counter-value" data-target="<?= $jpenyuluhnon->jumlah?>">0</span></h4>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
       <div class="card card-danger">
           <div class="card-body">
               <div class="d-flex align-items-center">
