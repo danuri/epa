@@ -57,9 +57,9 @@ class ValidasiModel extends Model
       }
 
       if($level == 2){
-        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' $wjenis");
+        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND is_verif='1' $wjenis");
       }else if($level == 3){
-        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$kelola' $wjenis");
+        $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_provinsi='$kelola' AND is_verif='1' $wjenis");
       }else{
         $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM penyuluh WHERE agama='$agama' AND tugas_kabupaten='$kelola' AND is_verif='1' $wjenis");
       }
